@@ -223,22 +223,7 @@ export default function Home() {
               <p className="text-lg text-nxt-gray-500">동영상으로 배우는 PartyRock 완전정복</p>
             </div>
 
-            {/* Category Filter */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {TUTORIAL_CATEGORIES.map((category) => (
-                <Button
-                  key={category}
-                  variant={selectedTutorialCategory === category ? "default" : "outline"}
-                  className={selectedTutorialCategory === category ? 
-                    "bg-nxt-blue text-white" : 
-                    "bg-white text-nxt-gray-500 hover:bg-nxt-gray-100"
-                  }
-                  onClick={() => setSelectedTutorialCategory(category)}
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
+
 
             {/* Tutorial Grid */}
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
