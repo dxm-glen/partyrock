@@ -58,7 +58,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-nxt-gray-50">
       <Header onAdminClick={() => setShowAdminModal(true)} />
-      
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs defaultValue="home" className="w-full">
           <TabsList className="grid w-full grid-cols-5 mb-8">
@@ -73,7 +72,7 @@ export default function Home() {
           <TabsContent value="home" className="tab-content">
             {/* Hero Section */}
             <div className="bg-gradient-to-r from-nxt-blue/90 to-nxt-purple/90 rounded-2xl p-8 mb-8 text-white relative overflow-hidden">
-              <div className="absolute inset-0 bg-black/20"></div>
+              <div className="absolute inset-0 bg-[#3477ff]"></div>
               <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
                 <div>
                   <h1 className="text-4xl font-bold mb-4 text-white drop-shadow-lg">
@@ -472,7 +471,6 @@ export default function Home() {
           </TabsContent>
         </Tabs>
       </main>
-
       <AdminAuthModal 
         isOpen={showAdminModal}
         onClose={() => setShowAdminModal(false)}
