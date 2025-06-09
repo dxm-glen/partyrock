@@ -18,11 +18,11 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "기초":
+      case "가입 및 로그인 안내":
         return "bg-green-100 text-green-800";
-      case "응용":
+      case "위젯 및 제작 실습":
         return "bg-blue-100 text-blue-800";
-      case "고급":
+      case "데모 확인":
         return "bg-purple-100 text-purple-800";
       default:
         return "bg-gray-100 text-gray-800";
