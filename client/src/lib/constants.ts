@@ -1,4 +1,4 @@
-import { Seedling, Rocket, Crown } from "lucide-react";
+import { Sprout, Rocket, Crown } from "lucide-react";
 
 export interface LearningModule {
   title: string;
@@ -13,7 +13,7 @@ export interface LearningPath {
   progress: number;
   locked: boolean;
   lockMessage?: string;
-  icon: typeof Seedling;
+  icon: typeof Sprout;
   bgColor: string;
   badgeColor: string;
   iconColor: string;
@@ -34,7 +34,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
     progress: 50,
     locked: false,
-    icon: Seedling,
+    icon: Sprout,
     bgColor: "bg-green-50 border-green-100",
     badgeColor: "bg-green-100 text-green-800",
     iconColor: "text-green-600",

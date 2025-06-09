@@ -13,7 +13,7 @@ import {
   type InsertUserProgress
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, desc, and } from "drizzle-orm";
+import { eq, desc, and, sql } from "drizzle-orm";
 
 export interface IStorage {
   // User methods
@@ -96,14 +96,17 @@ export class DatabaseStorage implements IStorage {
 
   async deleteTutorial(id: number): Promise<boolean> {
     const result = await db.delete(tutorials).where(eq(tutorials.id, id));
-    return result.rowCount > 0;
+    return (result.rowCount || 0) > 0;
   }
 
   async incrementTutorialViews(id: number): Promise<void> {
-    await db
-      .update(tutorials)
-      .set({ views: tutorials.views + 1 })
-      .where(eq(tutorials.id, id));
+    const tutorial = await this.getTutorial(id);
+    if (tutorial) {
+      await db
+        .update(tutorials)
+        .set({ views: (tutorial.views || 0) + 1 })
+        .where(eq(tutorials.id, id));
+    }
   }
 
   // App Gallery methods
@@ -140,7 +143,7 @@ export class DatabaseStorage implements IStorage {
 
   async deleteApp(id: number): Promise<boolean> {
     const result = await db.delete(appGallery).where(eq(appGallery.id, id));
-    return result.rowCount > 0;
+    return (result.rowCount || 0) > 0;
   }
 
   // User Progress methods
