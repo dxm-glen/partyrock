@@ -129,28 +129,28 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
   return (
     <Card>
       <CardContent className="p-6">
-        <div className="border-b border-aws-gray-100 pb-4 mb-6">
-          <h3 className="text-lg font-bold text-aws-dark mb-2">동영상 업로드</h3>
-          <p className="text-sm text-aws-gray-500">새로운 튜토리얼 영상을 업로드하고 관리하세요.</p>
+        <div className="border-b border-nxt-gray-100 pb-4 mb-6">
+          <h3 className="text-lg font-bold text-nxt-dark mb-2">동영상 업로드</h3>
+          <p className="text-sm text-nxt-gray-500">새로운 튜토리얼 영상을 업로드하고 관리하세요.</p>
         </div>
 
         <form onSubmit={handleSubmit}>
           <div
-            className="border-2 border-dashed border-aws-gray-200 rounded-lg p-8 text-center hover:border-aws-orange transition-colors cursor-pointer mb-6"
+            className="border-2 border-dashed border-nxt-gray-200 rounded-lg p-8 text-center hover:border-nxt-blue transition-colors cursor-pointer mb-6"
             onDragOver={handleDragOver}
             onDrop={handleDrop}
             onClick={() => fileInputRef.current?.click()}
           >
-            <div className="w-16 h-16 bg-aws-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CloudUploadIcon className="text-aws-orange h-6 w-6" />
+            <div className="w-16 h-16 bg-nxt-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CloudUploadIcon className="text-nxt-blue h-6 w-6" />
             </div>
-            <div className="text-aws-dark font-medium mb-2">
+            <div className="text-nxt-dark font-medium mb-2">
               {selectedFiles.video ? selectedFiles.video.name : "동영상 파일을 끌어다 놓거나 클릭하여 업로드"}
             </div>
-            <div className="text-sm text-aws-gray-500 mb-4">MP4, WebM 형식 지원 (최대 500MB)</div>
+            <div className="text-sm text-nxt-gray-500 mb-4">MP4, WebM 형식 지원 (최대 500MB)</div>
             <Button
               type="button"
-              className="bg-aws-orange hover:bg-orange-600 text-white text-sm"
+              className="bg-nxt-blue hover:bg-blue-600 text-white text-sm"
             >
               파일 선택
             </Button>
@@ -240,12 +240,12 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
                   }
                 }}
               />
-              <div className="text-xs text-aws-gray-500 mt-1">.srt 또는 .vtt 형식</div>
+              <div className="text-xs text-nxt-gray-500 mt-1">.srt 또는 .vtt 형식</div>
             </div>
 
             <Button
               type="submit"
-              className="w-full bg-aws-orange hover:bg-orange-600 text-white"
+              className="w-full bg-nxt-blue hover:bg-blue-600 text-white"
               disabled={uploadMutation.isPending}
             >
               {uploadMutation.isPending ? "업로드 중..." : "업로드 및 발행"}

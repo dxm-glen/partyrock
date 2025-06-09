@@ -377,15 +377,15 @@ export default function Home() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                          <UsersIcon className="text-purple-600 h-6 w-6" />
+                        <div className="w-12 h-12 bg-nxt-orange/10 rounded-lg flex items-center justify-center">
+                          <UsersIcon className="text-nxt-orange h-6 w-6" />
                         </div>
-                        <span className="text-sm text-aws-gray-500">이번 달</span>
+                        <span className="text-sm text-nxt-gray-500">이번 달</span>
                       </div>
-                      <div className="text-2xl font-bold text-aws-dark mb-2">
+                      <div className="text-2xl font-bold text-nxt-dark mb-2">
                         {adminStats?.totalViews || 0}
                       </div>
-                      <div className="text-sm text-aws-gray-500">총 조회수</div>
+                      <div className="text-sm text-nxt-gray-500">총 조회수</div>
                     </CardContent>
                   </Card>
                 </div>
