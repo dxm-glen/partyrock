@@ -72,21 +72,22 @@ export default function Home() {
           {/* Home Tab */}
           <TabsContent value="home" className="tab-content">
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-nxt-dark to-nxt-blue rounded-2xl p-8 mb-8 text-white">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="bg-gradient-to-r from-nxt-blue/90 to-nxt-purple/90 rounded-2xl p-8 mb-8 text-white relative overflow-hidden">
+              <div className="absolute inset-0 bg-black/20"></div>
+              <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
                 <div>
-                  <h1 className="text-4xl font-bold mb-4 text-white">
+                  <h1 className="text-4xl font-bold mb-4 text-white drop-shadow-lg">
                     AWS PartyRock으로<br />AI 앱을 쉽게 만들어보세요
                   </h1>
-                  <p className="text-lg mb-6 text-white/90">
+                  <p className="text-lg mb-6 text-white/95 drop-shadow">
                     코딩 없이도 생성형 AI를 활용한 웹 애플리케이션을 제작할 수 있습니다. 
                     대학생, 교직원, 공무원을 위한 전문 교육 과정을 제공합니다.
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <Button className="bg-nxt-purple hover:bg-purple-600 px-6 py-3 rounded-lg font-medium text-white">
+                    <Button className="bg-white text-nxt-blue hover:bg-gray-100 px-6 py-3 rounded-lg font-medium shadow-lg">
                       학습 시작하기
                     </Button>
-                    <Button variant="outline" className="border-white/30 hover:bg-white/10 px-6 py-3 rounded-lg font-medium text-white border-white">
+                    <Button variant="outline" className="border-2 border-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg font-medium text-white border-white shadow-lg">
                       데모 보기
                     </Button>
                   </div>
@@ -400,9 +401,9 @@ export default function Home() {
                   {/* App Gallery Management */}
                   <Card>
                     <CardContent className="p-6">
-                      <div className="border-b border-aws-gray-100 pb-4 mb-6">
-                        <h3 className="text-lg font-bold text-aws-dark mb-2">앱 갤러리 관리</h3>
-                        <p className="text-sm text-aws-gray-500">갤러리에 새로운 앱을 등록하고 관리하세요.</p>
+                      <div className="border-b border-nxt-gray-100 pb-4 mb-6">
+                        <h3 className="text-lg font-bold text-nxt-dark mb-2">앱 갤러리 관리</h3>
+                        <p className="text-sm text-nxt-gray-500">갤러리에 새로운 앱을 등록하고 관리하세요.</p>
                       </div>
                       
                       <form className="space-y-4">
@@ -453,13 +454,13 @@ export default function Home() {
                         
                         <div>
                           <Label>스크린샷 업로드</Label>
-                          <div className="border-2 border-dashed border-aws-gray-200 rounded-lg p-4 text-center cursor-pointer hover:border-aws-orange transition-colors">
-                            <ImageIcon className="text-aws-gray-400 h-8 w-8 mx-auto mb-2" />
-                            <div className="text-sm text-aws-gray-500">앱 스크린샷을 업로드하세요</div>
+                          <div className="border-2 border-dashed border-nxt-gray-200 rounded-lg p-4 text-center cursor-pointer hover:border-nxt-purple transition-colors">
+                            <ImageIcon className="text-nxt-gray-400 h-8 w-8 mx-auto mb-2" />
+                            <div className="text-sm text-nxt-gray-500">앱 스크린샷을 업로드하세요</div>
                           </div>
                         </div>
                         
-                        <Button className="w-full bg-aws-orange hover:bg-orange-600 text-white">
+                        <Button className="w-full bg-nxt-purple hover:bg-purple-600 text-white">
                           앱 등록하기
                         </Button>
                       </form>
