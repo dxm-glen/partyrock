@@ -50,6 +50,14 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
     setIsVideoOpen(open);
   };
 
+  const handleCloseClick = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+    setIsVideoOpen(false);
+  };
+
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" onClick={handleVideoClick}>
       <div className="relative">
@@ -127,7 +135,7 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
           </div>
           <div className="flex justify-center mt-4">
             <Button
-              onClick={() => handleCloseModal(false)}
+              onClick={handleCloseClick}
               variant="outline"
               className="px-6"
             >
