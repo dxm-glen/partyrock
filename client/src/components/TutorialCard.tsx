@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Play, Eye, Star } from "lucide-react";
 import { useState } from "react";
 import type { Tutorial } from "@shared/schema";
@@ -100,19 +100,19 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
         <DialogContent className="max-w-4xl max-h-[90vh]">
           <DialogHeader>
             <DialogTitle className="text-nxt-dark">{tutorial.title}</DialogTitle>
+            <DialogDescription className="text-nxt-gray-500">
+              {tutorial.description}
+            </DialogDescription>
           </DialogHeader>
           <div className="aspect-video">
             <video
               controls
               autoPlay
               className="w-full h-full rounded-lg"
-              src={tutorial.videoUrl}
+              src={tutorial.videoUrl ?? undefined}
             >
               죄송합니다. 브라우저에서 동영상을 재생할 수 없습니다.
             </video>
-          </div>
-          <div className="text-sm text-nxt-gray-500 mt-4">
-            {tutorial.description}
           </div>
         </DialogContent>
       </Dialog>
