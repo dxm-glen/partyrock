@@ -60,25 +60,6 @@ export const LEARNING_PATHS: LearningPath[] = [
     buttonColor: "bg-nxt-purple",
     buttonHover: "bg-purple-600",
   },
-  {
-    level: "전문가",
-    title: "전문가 과정",
-    description: "복잡한 AI 워크플로우와 고급 기능을 마스터해보세요.",
-    modules: [
-      { title: "복잡한 워크플로우 설계", completed: false },
-      { title: "다중 위젯 연동", completed: false },
-      { title: "프롬프트 엔지니어링 고급", completed: false },
-    ],
-    progress: 0,
-    locked: true,
-    lockMessage: "중급 과정 완료 필요",
-    icon: Crown,
-    bgColor: "bg-nxt-orange/10 border-nxt-orange/20",
-    badgeColor: "bg-nxt-orange/20 text-nxt-orange",
-    iconColor: "text-nxt-orange",
-    buttonColor: "bg-nxt-orange",
-    buttonHover: "bg-orange-600",
-  },
 ];
 
 export const TUTORIAL_CATEGORIES = ["전체", "가입 및 로그인 안내", "위젯 및 제작 실습", "데모 확인"];
