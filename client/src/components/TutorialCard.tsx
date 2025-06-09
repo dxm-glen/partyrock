@@ -12,7 +12,9 @@ interface TutorialCardProps {
 
 export default function TutorialCard({ tutorial }: TutorialCardProps) {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoDuration, setVideoDuration] = useState<number | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const thumbnailVideoRef = useRef<HTMLVideoElement>(null);
 
   const formatDuration = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -59,6 +61,12 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
     setIsVideoOpen(false);
   };
 
+  const handleThumbnailVideoLoad = () => {
+    if (thumbnailVideoRef.current) {
+      setVideoDuration(thumbnailVideoRef.current.duration);
+    }
+  };
+
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" onClick={handleVideoClick}>
       <div className="relative">
@@ -70,10 +78,12 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
           />
         ) : tutorial.videoUrl ? (
           <video
+            ref={thumbnailVideoRef}
             className="w-full h-48 object-cover"
             src={tutorial.videoUrl}
             preload="metadata"
             muted
+            onLoadedMetadata={handleThumbnailVideoLoad}
           />
         ) : (
           <div className="w-full h-48 bg-nxt-gray-200 flex items-center justify-center">
@@ -87,9 +97,9 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
           </div>
         </div>
         
-        {tutorial.duration && (
+        {(videoDuration || tutorial.duration) && (
           <div className="absolute top-3 right-3 bg-black/70 text-white px-2 py-1 rounded text-xs">
-            {formatDuration(tutorial.duration)}
+            {formatDuration(videoDuration || tutorial.duration!)}
           </div>
         )}
       </div>
