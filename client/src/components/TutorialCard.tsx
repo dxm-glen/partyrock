@@ -136,7 +136,10 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
           </div>
           <div className="flex justify-center mt-4">
             <Button
-              onClick={() => handleCloseModal(false)}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCloseModal(false);
+              }}
               variant="outline"
               className="px-6"
             >
