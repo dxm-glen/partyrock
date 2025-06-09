@@ -171,6 +171,9 @@ export default function Home() {
             <div className="mb-8">
               <h2 className="text-3xl font-bold text-nxt-dark mb-4">학습 센터</h2>
               <p className="text-lg text-nxt-gray-500">체계적인 학습 과정으로 AI 앱 개발 전문가가 되어보세요.</p>
+              <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <p className="text-yellow-800 font-medium">아직 준비중인 기능입니다</p>
+              </div>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8 mb-12">
@@ -258,6 +261,9 @@ export default function Home() {
             <div className="mb-8">
               <h2 className="text-3xl font-bold text-nxt-dark mb-4">앱 갤러리</h2>
               <p className="text-lg text-nxt-gray-500">분야별 AI 앱 예제와 템플릿을 둘러보세요</p>
+              <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <p className="text-yellow-800 font-medium">아직 준비중인 기능입니다</p>
+              </div>
             </div>
 
             {/* Category Tabs */}
