@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Play, Eye, Star } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import type { Tutorial } from "@shared/schema";
 
 interface TutorialCardProps {
@@ -11,6 +11,7 @@ interface TutorialCardProps {
 
 export default function TutorialCard({ tutorial }: TutorialCardProps) {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const formatDuration = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -38,6 +39,14 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
   const handleVideoClick = () => {
     setIsVideoOpen(true);
     console.log('Playing video:', tutorial.id);
+  };
+
+  const handleCloseModal = (open: boolean) => {
+    if (!open && videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+    setIsVideoOpen(open);
   };
 
   return (
@@ -96,7 +105,7 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
       </CardContent>
 
       {/* Video Player Modal */}
-      <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+      <Dialog open={isVideoOpen} onOpenChange={handleCloseModal}>
         <DialogContent className="max-w-4xl max-h-[90vh]">
           <DialogHeader>
             <DialogTitle className="text-nxt-dark">{tutorial.title}</DialogTitle>
@@ -106,6 +115,7 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
           </DialogHeader>
           <div className="aspect-video">
             <video
+              ref={videoRef}
               controls
               autoPlay
               className="w-full h-full rounded-lg"
