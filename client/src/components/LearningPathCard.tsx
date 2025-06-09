@@ -21,8 +21,8 @@ export default function LearningPathCard({ path }: LearningPathCardProps) {
           </span>
           <path.icon className={`h-6 w-6 ${path.iconColor}`} />
         </div>
-        <h3 className="text-xl font-bold text-aws-dark mb-2">{path.title}</h3>
-        <p className="text-aws-gray-500 text-sm">{path.description}</p>
+        <h3 className="text-xl font-bold text-nxt-dark mb-2">{path.title}</h3>
+        <p className="text-nxt-gray-500 text-sm">{path.description}</p>
       </div>
       
       <CardContent className="p-6">
@@ -33,19 +33,19 @@ export default function LearningPathCard({ path }: LearningPathCardProps) {
                 module.completed 
                   ? 'bg-green-100'
                   : path.locked 
-                  ? 'bg-aws-gray-100'
-                  : 'bg-aws-gray-100'
+                  ? 'bg-nxt-gray-100'
+                  : 'bg-nxt-gray-100'
               }`}>
                 {module.completed ? (
                   <Check className="text-green-600 h-3 w-3" />
                 ) : path.locked ? (
-                  <Lock className="text-aws-gray-400 h-3 w-3" />
+                  <Lock className="text-nxt-gray-400 h-3 w-3" />
                 ) : (
-                  <span className="text-xs text-aws-gray-500">{index + 1}</span>
+                  <span className="text-xs text-nxt-gray-500">{index + 1}</span>
                 )}
               </div>
               <span className={`text-sm ${
-                module.completed ? 'text-aws-dark' : path.locked ? 'text-aws-gray-400' : 'text-aws-gray-500'
+                module.completed ? 'text-nxt-dark' : path.locked ? 'text-nxt-gray-400' : 'text-nxt-gray-500'
               }`}>
                 {module.title}
               </span>
@@ -54,7 +54,7 @@ export default function LearningPathCard({ path }: LearningPathCardProps) {
         </div>
         
         <div className="mb-6">
-          <div className="flex justify-between text-sm text-aws-gray-500 mb-2">
+          <div className="flex justify-between text-sm text-nxt-gray-500 mb-2">
             <span>진행률</span>
             <span>{path.locked ? '잠금됨' : `${progressPercentage.toFixed(0)}%`}</span>
           </div>
@@ -67,7 +67,7 @@ export default function LearningPathCard({ path }: LearningPathCardProps) {
         <Button 
           className={`w-full font-medium ${
             path.locked 
-              ? 'bg-aws-gray-300 text-aws-gray-500 cursor-not-allowed hover:bg-aws-gray-300'
+              ? 'bg-nxt-gray-300 text-nxt-gray-500 cursor-not-allowed hover:bg-nxt-gray-300'
               : progressPercentage > 0
               ? `${path.buttonColor} hover:${path.buttonHover} text-white`
               : `${path.buttonColor} hover:${path.buttonHover} text-white`

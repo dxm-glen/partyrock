@@ -44,14 +44,14 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
             className="w-full h-48 object-cover"
           />
         ) : (
-          <div className="w-full h-48 bg-aws-gray-200 flex items-center justify-center">
-            <Play className="h-12 w-12 text-aws-gray-400" />
+          <div className="w-full h-48 bg-nxt-gray-200 flex items-center justify-center">
+            <Play className="h-12 w-12 text-nxt-gray-400" />
           </div>
         )}
         
         <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
           <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center">
-            <Play className="text-aws-orange h-6 w-6 ml-1" />
+            <Play className="text-nxt-blue h-6 w-6 ml-1" />
           </div>
         </div>
         
@@ -65,17 +65,17 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-3">
           <Badge className={getCategoryColor(tutorial.category)}>{tutorial.category}</Badge>
-          <span className="text-xs text-aws-gray-500">
+          <span className="text-xs text-nxt-gray-500">
             {tutorial.createdAt ? new Date(tutorial.createdAt).toLocaleDateString('ko-KR') : ''}
           </span>
         </div>
         
-        <h3 className="font-semibold text-aws-dark mb-2 line-clamp-2">{tutorial.title}</h3>
+        <h3 className="font-semibold text-nxt-dark mb-2 line-clamp-2">{tutorial.title}</h3>
         
-        <p className="text-sm text-aws-gray-500 mb-4 line-clamp-2">{tutorial.description}</p>
+        <p className="text-sm text-nxt-gray-500 mb-4 line-clamp-2">{tutorial.description}</p>
         
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2 text-xs text-aws-gray-500">
+          <div className="flex items-center space-x-2 text-xs text-nxt-gray-500">
             <Eye className="h-3 w-3" />
             <span>{tutorial.views?.toLocaleString() || 0} 조회</span>
           </div>
@@ -83,7 +83,7 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
           {rating > 0 && (
             <div className="flex items-center space-x-1">
               <Star className="h-3 w-3 text-yellow-400 fill-current" />
-              <span className="text-xs text-aws-gray-500">{rating.toFixed(1)}</span>
+              <span className="text-xs text-nxt-gray-500">{rating.toFixed(1)}</span>
             </div>
           )}
         </div>

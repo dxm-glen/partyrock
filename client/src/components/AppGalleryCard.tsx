@@ -52,11 +52,11 @@ export default function AppGalleryCard({ app }: AppGalleryCardProps) {
               <Badge className={getCategoryColor(app.category)}>{app.category}</Badge>
               <Badge className={getDifficultyColor(app.difficulty)}>{app.difficulty}</Badge>
             </div>
-            <h3 className="text-xl font-bold text-aws-dark mb-2">{app.name}</h3>
-            <p className="text-aws-gray-500 text-sm">{app.description}</p>
+            <h3 className="text-xl font-bold text-nxt-dark mb-2">{app.name}</h3>
+            <p className="text-nxt-gray-500 text-sm">{app.description}</p>
           </div>
           <Button variant="ghost" size="sm">
-            <Bookmark className="text-aws-gray-400 h-4 w-4" />
+            <Bookmark className="text-nxt-gray-400 h-4 w-4" />
           </Button>
         </div>
 
@@ -73,7 +73,7 @@ export default function AppGalleryCard({ app }: AppGalleryCardProps) {
 
         <div className="space-y-4">
           <div className="flex items-center justify-between text-sm">
-            <span className="text-aws-gray-500">사용자 평점</span>
+            <span className="text-nxt-gray-500">사용자 평점</span>
             <div className="flex items-center space-x-1">
               <div className="flex text-yellow-400">
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -85,20 +85,20 @@ export default function AppGalleryCard({ app }: AppGalleryCardProps) {
                   />
                 ))}
               </div>
-              <span className="text-aws-gray-500">({rating.toFixed(1)})</span>
+              <span className="text-nxt-gray-500">({rating.toFixed(1)})</span>
             </div>
           </div>
 
           {app.useCase && (
             <div className="flex items-center justify-between text-sm">
-              <span className="text-aws-gray-500">활용 사례</span>
-              <span className="text-aws-dark font-medium">{app.useCase}</span>
+              <span className="text-nxt-gray-500">활용 사례</span>
+              <span className="text-nxt-dark font-medium">{app.useCase}</span>
             </div>
           )}
 
           <div className="flex space-x-3 pt-4">
             <Button
-              className="flex-1 bg-aws-orange hover:bg-orange-600 text-white"
+              className="flex-1 bg-nxt-purple hover:bg-purple-600 text-white"
               onClick={handleOpenApp}
               disabled={!app.partyrockLink}
             >

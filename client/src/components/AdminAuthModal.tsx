@@ -58,11 +58,11 @@ export default function AdminAuthModal({ isOpen, onClose, onAuth }: AdminAuthMod
       <DialogContent className="max-w-md">
         <DialogHeader>
           <div className="text-center mb-6">
-            <div className="w-16 h-16 bg-aws-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <KeyIcon className="text-aws-orange h-6 w-6" />
+            <div className="w-16 h-16 bg-nxt-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <KeyIcon className="text-nxt-blue h-6 w-6" />
             </div>
-            <DialogTitle className="text-xl font-bold text-aws-dark mb-2">관리자 인증</DialogTitle>
-            <p className="text-aws-gray-500 text-sm">관리자 키를 입력해주세요</p>
+            <DialogTitle className="text-xl font-bold text-nxt-dark mb-2">관리자 인증</DialogTitle>
+            <p className="text-nxt-gray-500 text-sm">관리자 키를 입력해주세요</p>
           </div>
         </DialogHeader>
 
@@ -95,7 +95,7 @@ export default function AdminAuthModal({ isOpen, onClose, onAuth }: AdminAuthMod
             </Button>
             <Button
               type="submit"
-              className="flex-1 bg-aws-orange hover:bg-orange-600 text-white"
+              className="flex-1 bg-nxt-blue hover:bg-blue-600 text-white"
               disabled={authMutation.isPending}
             >
               {authMutation.isPending ? "인증 중..." : "인증하기"}
