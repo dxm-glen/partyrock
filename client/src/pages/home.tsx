@@ -48,7 +48,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-aws-gray-50">
+    <div className="min-h-screen bg-nxt-gray-50">
       <Header onAdminClick={() => setShowAdminModal(true)} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -64,21 +64,21 @@ export default function Home() {
           {/* Home Tab */}
           <TabsContent value="home" className="tab-content">
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-aws-dark to-aws-blue rounded-2xl p-8 mb-8 text-white">
+            <div className="bg-gradient-to-r from-nxt-dark to-nxt-blue rounded-2xl p-8 mb-8 text-white">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h1 className="text-4xl font-bold mb-4">
+                  <h1 className="text-4xl font-bold mb-4 text-white">
                     AWS PartyRock으로<br />AI 앱을 쉽게 만들어보세요
                   </h1>
-                  <p className="text-lg mb-6 opacity-90">
+                  <p className="text-lg mb-6 text-white/90">
                     코딩 없이도 생성형 AI를 활용한 웹 애플리케이션을 제작할 수 있습니다. 
                     대학생, 교직원, 공무원을 위한 전문 교육 과정을 제공합니다.
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <Button className="bg-aws-orange hover:bg-orange-600 px-6 py-3 rounded-lg font-medium">
+                    <Button className="bg-nxt-purple hover:bg-purple-600 px-6 py-3 rounded-lg font-medium text-white">
                       학습 시작하기
                     </Button>
-                    <Button variant="outline" className="border-white/30 hover:bg-white/10 px-6 py-3 rounded-lg font-medium text-white">
+                    <Button variant="outline" className="border-white/30 hover:bg-white/10 px-6 py-3 rounded-lg font-medium text-white border-white">
                       데모 보기
                     </Button>
                   </div>
@@ -97,11 +97,11 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               <Card>
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-aws-orange/10 rounded-lg flex items-center justify-center mb-4">
-                    <Brain className="text-aws-orange h-6 w-6" />
+                  <div className="w-12 h-12 bg-nxt-blue/10 rounded-lg flex items-center justify-center mb-4">
+                    <Brain className="text-nxt-blue h-6 w-6" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-3 text-aws-dark">노코드 AI 개발</h3>
-                  <p className="text-aws-gray-500">
+                  <h3 className="text-lg font-semibold mb-3 text-nxt-dark">노코드 AI 개발</h3>
+                  <p className="text-nxt-gray-500">
                     프로그래밍 지식 없이도 드래그 앤 드롭으로 AI 애플리케이션을 제작할 수 있습니다.
                   </p>
                 </CardContent>

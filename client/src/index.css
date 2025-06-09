@@ -15,7 +15,7 @@
   --card-foreground: hsl(20, 14.3%, 4.1%);
   --border: hsl(20, 5.9%, 90%);
   --input: hsl(20, 5.9%, 90%);
-  --primary: hsl(33, 100%, 50%);
+  --primary: hsl(220, 100%, 60%);
   --primary-foreground: hsl(0, 0%, 100%);
   --secondary: hsl(60, 4.8%, 95.9%);
   --secondary-foreground: hsl(24, 9.8%, 10%);
@@ -26,20 +26,21 @@
   --ring: hsl(20, 14.3%, 4.1%);
   --radius: 0.5rem;
 
-  /* AWS Custom Colors */
-  --aws-orange: hsl(33, 100%, 50%);
-  --aws-dark: hsl(210, 29%, 24%);
-  --aws-blue: hsl(207, 72%, 37%);
-  --aws-gray-50: hsl(210, 20%, 98%);
-  --aws-gray-100: hsl(220, 14%, 96%);
-  --aws-gray-200: hsl(220, 13%, 91%);
-  --aws-gray-300: hsl(216, 12%, 84%);
-  --aws-gray-400: hsl(218, 11%, 65%);
-  --aws-gray-500: hsl(220, 9%, 46%);
-  --aws-gray-600: hsl(215, 14%, 34%);
-  --aws-gray-700: hsl(217, 19%, 27%);
-  --aws-gray-800: hsl(215, 28%, 17%);
-  --aws-gray-900: hsl(220, 39%, 11%);
+  /* NXT Cloud Brand Colors */
+  --nxt-blue: hsl(220, 100%, 60%);
+  --nxt-purple: hsl(290, 100%, 65%);
+  --nxt-dark: hsl(210, 29%, 24%);
+  --nxt-light-blue: hsl(220, 100%, 85%);
+  --nxt-gray-50: hsl(210, 20%, 98%);
+  --nxt-gray-100: hsl(220, 14%, 96%);
+  --nxt-gray-200: hsl(220, 13%, 91%);
+  --nxt-gray-300: hsl(216, 12%, 84%);
+  --nxt-gray-400: hsl(218, 11%, 65%);
+  --nxt-gray-500: hsl(220, 9%, 46%);
+  --nxt-gray-600: hsl(215, 14%, 34%);
+  --nxt-gray-700: hsl(217, 19%, 27%);
+  --nxt-gray-800: hsl(215, 28%, 17%);
+  --nxt-gray-900: hsl(220, 39%, 11%);
 }
 
 .dark {
@@ -53,7 +54,7 @@
   --card-foreground: hsl(0, 0%, 98%);
   --border: hsl(240, 3.7%, 15.9%);
   --input: hsl(240, 3.7%, 15.9%);
-  --primary: hsl(33, 100%, 50%);
+  --primary: hsl(220, 100%, 60%);
   --primary-foreground: hsl(0, 0%, 100%);
   --secondary: hsl(240, 3.7%, 15.9%);
   --secondary-foreground: hsl(0, 0%, 98%);
@@ -75,69 +76,77 @@
   }
 }
 
-/* Custom AWS Brand Colors */
-.bg-aws-orange {
-  background-color: var(--aws-orange);
+/* Custom NXT Cloud Brand Colors */
+.bg-nxt-blue {
+  background-color: var(--nxt-blue);
 }
 
-.text-aws-orange {
-  color: var(--aws-orange);
+.text-nxt-blue {
+  color: var(--nxt-blue);
 }
 
-.border-aws-orange {
-  border-color: var(--aws-orange);
+.border-nxt-blue {
+  border-color: var(--nxt-blue);
 }
 
-.bg-aws-dark {
-  background-color: var(--aws-dark);
+.bg-nxt-purple {
+  background-color: var(--nxt-purple);
 }
 
-.text-aws-dark {
-  color: var(--aws-dark);
+.text-nxt-purple {
+  color: var(--nxt-purple);
 }
 
-.bg-aws-blue {
-  background-color: var(--aws-blue);
+.bg-nxt-dark {
+  background-color: var(--nxt-dark);
 }
 
-.text-aws-blue {
-  color: var(--aws-blue);
+.text-nxt-dark {
+  color: var(--nxt-dark);
 }
 
-.bg-aws-gray-50 {
-  background-color: var(--aws-gray-50);
+.bg-nxt-light-blue {
+  background-color: var(--nxt-light-blue);
 }
 
-.bg-aws-gray-100 {
-  background-color: var(--aws-gray-100);
+.text-nxt-light-blue {
+  color: var(--nxt-light-blue);
 }
 
-.bg-aws-gray-200 {
-  background-color: var(--aws-gray-200);
+.bg-nxt-gray-50 {
+  background-color: var(--nxt-gray-50);
 }
 
-.bg-aws-gray-500 {
-  background-color: var(--aws-gray-500);
+.bg-nxt-gray-100 {
+  background-color: var(--nxt-gray-100);
 }
 
-.text-aws-gray-500 {
-  color: var(--aws-gray-500);
+.bg-nxt-gray-200 {
+  background-color: var(--nxt-gray-200);
 }
 
-.text-aws-gray-600 {
-  color: var(--aws-gray-600);
+.bg-nxt-gray-500 {
+  background-color: var(--nxt-gray-500);
 }
 
-.text-aws-gray-700 {
-  color: var(--aws-gray-700);
+.text-nxt-gray-500 {
+  color: var(--nxt-gray-500);
 }
 
-.border-aws-gray-100 {
-  border-color: var(--aws-gray-100);
+.text-nxt-gray-600 {
+  color: var(--nxt-gray-600);
 }
 
-.border-aws-gray-200 {
-  border-color: var(--aws-gray-200);
+.text-nxt-gray-700 {
+  color: var(--nxt-gray-700);
+}
+
+.border-nxt-gray-100 {
+  border-color: var(--nxt-gray-100);
+}
+
+.border-nxt-gray-200 {
+  border-color: var(--nxt-gray-200);
 }
 
 /* Video player customization */
