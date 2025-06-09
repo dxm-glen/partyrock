@@ -68,6 +68,13 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
             alt={tutorial.title}
             className="w-full h-48 object-cover"
           />
+        ) : tutorial.videoUrl ? (
+          <video
+            className="w-full h-48 object-cover"
+            src={tutorial.videoUrl}
+            preload="metadata"
+            muted
+          />
         ) : (
           <div className="w-full h-48 bg-nxt-gray-200 flex items-center justify-center">
             <Play className="h-12 w-12 text-nxt-gray-400" />
