@@ -107,6 +107,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
     next();
   }, express.static(attachedAssetsDir));
 
+
+
+  // Debug endpoint to check file availability
+  app.get('/api/debug/files', async (req, res) => {
+    try {
+      const uploadsPath = path.join(process.cwd(), 'uploads');
+      const publicUploadsPath = path.join(process.cwd(), 'client/public/uploads');
+      
+      const checkDir = (dirPath: string) => {
+        try {
+          return fs.existsSync(dirPath) ? fs.readdirSync(dirPath) : [];
+        } catch {
+          return [];
+        }
+      };
+      
+      res.json({
+        uploads: checkDir(uploadsPath),
+        publicUploads: checkDir(publicUploadsPath),
+        cwd: process.cwd(),
+        env: process.env.NODE_ENV
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
   // Auth endpoints
   app.post('/api/auth/admin', (req, res) => {
     const { adminKey } = req.body;
