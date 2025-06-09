@@ -80,13 +80,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     next();
   };
 
-  // Serve uploaded files with explicit headers
+  // Serve uploaded files with explicit headers and compression
   app.use('/uploads', (req, res, next) => {
     res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Cache-Control', 'public, max-age=31536000');
+    res.setHeader('Accept-Ranges', 'bytes');
+    // Enable gzip for non-video files
+    if (!req.path.match(/\.(mp4|webm|mov)$/i)) {
+      res.setHeader('Content-Encoding', 'gzip');
+    }
     next();
-  }, express.static(uploadDir));
+  }, express.static(uploadDir, {
+    maxAge: '1y',
+    etag: true,
+    lastModified: true
+  }));
 
   // Fallback for production - serve uploads from current directory
   app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
