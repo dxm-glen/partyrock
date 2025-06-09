@@ -62,8 +62,8 @@ export default function Home() {
         <Tabs defaultValue="home" className="w-full">
           <TabsList className="grid w-full grid-cols-5 mb-8">
             <TabsTrigger value="home">홈</TabsTrigger>
-            <TabsTrigger value="learning">학습 센터</TabsTrigger>
             <TabsTrigger value="tutorials">튜토리얼</TabsTrigger>
+            <TabsTrigger value="learning">학습 센터</TabsTrigger>
             <TabsTrigger value="gallery">앱 갤러리</TabsTrigger>
             <TabsTrigger value="admin">관리자</TabsTrigger>
           </TabsList>
