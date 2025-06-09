@@ -122,9 +122,7 @@ export default function Home() {
                     <GraduationCap className="text-nxt-purple h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold mb-3 text-nxt-dark">체계적인 학습 과정</h3>
-                  <p className="text-nxt-gray-500">
-                    기초부터 전문가 수준까지 단계별로 구성된 한국어 교육 콘텐츠를 제공합니다.
-                  </p>
+                  <p className="text-nxt-gray-500">기초부터 중급자 수준까지 단계별로 구성된 한국어 교육 콘텐츠를 제공합니다.</p>
                 </CardContent>
               </Card>
 
