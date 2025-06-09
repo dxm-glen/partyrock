@@ -109,11 +109,11 @@ export default function Home() {
 
               <Card>
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-aws-blue/10 rounded-lg flex items-center justify-center mb-4">
-                    <GraduationCap className="text-aws-blue h-6 w-6" />
+                  <div className="w-12 h-12 bg-nxt-purple/10 rounded-lg flex items-center justify-center mb-4">
+                    <GraduationCap className="text-nxt-purple h-6 w-6" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-3 text-aws-dark">체계적인 학습 과정</h3>
-                  <p className="text-aws-gray-500">
+                  <h3 className="text-lg font-semibold mb-3 text-nxt-dark">체계적인 학습 과정</h3>
+                  <p className="text-nxt-gray-500">
                     기초부터 전문가 수준까지 단계별로 구성된 한국어 교육 콘텐츠를 제공합니다.
                   </p>
                 </CardContent>
@@ -124,8 +124,8 @@ export default function Home() {
                   <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                     <Users className="text-green-600 h-6 w-6" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-3 text-aws-dark">한국 사용자 맞춤</h3>
-                  <p className="text-aws-gray-500">
+                  <h3 className="text-lg font-semibold mb-3 text-nxt-dark">한국 사용자 맞춤</h3>
+                  <p className="text-nxt-gray-500">
                     교육, 비즈니스, 공공 분야 한국 사용자를 위한 실무 중심 예제를 제공합니다.
                   </p>
                 </CardContent>
@@ -137,20 +137,20 @@ export default function Home() {
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-4 gap-8 text-center">
                   <div>
-                    <div className="text-3xl font-bold text-aws-orange mb-2">{tutorials.length}+</div>
-                    <div className="text-aws-gray-500">튜토리얼 영상</div>
+                    <div className="text-3xl font-bold text-nxt-blue mb-2">{tutorials.length}+</div>
+                    <div className="text-nxt-gray-500">튜토리얼 영상</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-aws-blue mb-2">{apps.length}+</div>
-                    <div className="text-aws-gray-500">예제 앱</div>
+                    <div className="text-3xl font-bold text-nxt-purple mb-2">{apps.length}+</div>
+                    <div className="text-nxt-gray-500">예제 앱</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-green-600 mb-2">1000+</div>
-                    <div className="text-aws-gray-500">활성 사용자</div>
+                    <div className="text-nxt-gray-500">활성 사용자</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-purple-600 mb-2">3</div>
-                    <div className="text-aws-gray-500">학습 단계</div>
+                    <div className="text-nxt-gray-500">학습 단계</div>
                   </div>
                 </div>
               </CardContent>
@@ -160,8 +160,8 @@ export default function Home() {
           {/* Learning Center Tab */}
           <TabsContent value="learning" className="tab-content">
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-aws-dark mb-4">학습 센터</h2>
-              <p className="text-lg text-aws-gray-500">
+              <h2 className="text-3xl font-bold text-nxt-dark mb-4">학습 센터</h2>
+              <p className="text-lg text-nxt-gray-500">
                 체계적인 3단계 학습 과정으로 AI 앱 개발 전문가가 되어보세요.
               </p>
             </div>
@@ -175,32 +175,32 @@ export default function Home() {
             {/* Learning Resources */}
             <Card>
               <CardContent className="p-8">
-                <h3 className="text-xl font-bold text-aws-dark mb-6">추가 학습 자료</h3>
+                <h3 className="text-xl font-bold text-nxt-dark mb-6">추가 학습 자료</h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-aws-orange/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <GraduationCap className="text-aws-orange h-5 w-5" />
+                    <div className="w-10 h-10 bg-nxt-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <GraduationCap className="text-nxt-blue h-5 w-5" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-aws-dark mb-2">PartyRock 가이드북</h4>
-                      <p className="text-sm text-aws-gray-500 mb-3">
+                      <h4 className="font-semibold text-nxt-dark mb-2">PartyRock 가이드북</h4>
+                      <p className="text-sm text-nxt-gray-500 mb-3">
                         상세한 기능 설명과 활용 팁이 담긴 종합 가이드입니다.
                       </p>
-                      <Button variant="link" className="text-aws-orange hover:text-orange-600 text-sm font-medium p-0">
+                      <Button variant="link" className="text-nxt-blue hover:text-blue-700 text-sm font-medium p-0">
                         다운로드
                       </Button>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-aws-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Users className="text-aws-blue h-5 w-5" />
+                    <div className="w-10 h-10 bg-nxt-purple/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Users className="text-nxt-purple h-5 w-5" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-aws-dark mb-2">커뮤니티 포럼</h4>
-                      <p className="text-sm text-aws-gray-500 mb-3">
+                      <h4 className="font-semibold text-nxt-dark mb-2">커뮤니티 포럼</h4>
+                      <p className="text-sm text-nxt-gray-500 mb-3">
                         다른 사용자들과 경험을 공유하고 질문을 나눠보세요.
                       </p>
-                      <Button variant="link" className="text-aws-blue hover:text-blue-700 text-sm font-medium p-0">
+                      <Button variant="link" className="text-nxt-purple hover:text-purple-700 text-sm font-medium p-0">
                         참여하기
                       </Button>
                     </div>
@@ -213,8 +213,8 @@ export default function Home() {
           {/* Tutorials Tab */}
           <TabsContent value="tutorials" className="tab-content">
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-aws-dark mb-4">튜토리얼</h2>
-              <p className="text-lg text-aws-gray-500">동영상으로 배우는 PartyRock 완전정복</p>
+              <h2 className="text-3xl font-bold text-nxt-dark mb-4">튜토리얼</h2>
+              <p className="text-lg text-nxt-gray-500">동영상으로 배우는 PartyRock 완전정복</p>
             </div>
 
             {/* Category Filter */}
@@ -224,8 +224,8 @@ export default function Home() {
                   key={category}
                   variant={selectedTutorialCategory === category ? "default" : "outline"}
                   className={selectedTutorialCategory === category ? 
-                    "bg-aws-orange text-white" : 
-                    "bg-white text-aws-gray-500 hover:bg-aws-gray-100"
+                    "bg-nxt-blue text-white" : 
+                    "bg-white text-nxt-gray-500 hover:bg-nxt-gray-100"
                   }
                   onClick={() => setSelectedTutorialCategory(category)}
                 >
@@ -239,11 +239,11 @@ export default function Home() {
               {tutorialsLoading ? (
                 <div className="col-span-full text-center py-12">
                   <div className="spinner mx-auto mb-4"></div>
-                  <p className="text-aws-gray-500">튜토리얼을 불러오는 중...</p>
+                  <p className="text-nxt-gray-500">튜토리얼을 불러오는 중...</p>
                 </div>
               ) : tutorials.length === 0 ? (
                 <div className="col-span-full text-center py-12">
-                  <p className="text-aws-gray-500">튜토리얼이 없습니다.</p>
+                  <p className="text-nxt-gray-500">튜토리얼이 없습니다.</p>
                 </div>
               ) : (
                 tutorials.map((tutorial) => (
@@ -254,7 +254,7 @@ export default function Home() {
 
             {tutorials.length > 0 && (
               <div className="text-center mt-12">
-                <Button className="bg-aws-orange hover:bg-orange-600 text-white px-8 py-3">
+                <Button className="bg-nxt-blue hover:bg-blue-600 text-white px-8 py-3">
                   더 많은 튜토리얼 보기
                 </Button>
               </div>
@@ -264,8 +264,8 @@ export default function Home() {
           {/* App Gallery Tab */}
           <TabsContent value="gallery" className="tab-content">
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-aws-dark mb-4">앱 갤러리</h2>
-              <p className="text-lg text-aws-gray-500">분야별 AI 앱 예제와 템플릿을 둘러보세요</p>
+              <h2 className="text-3xl font-bold text-nxt-dark mb-4">앱 갤러리</h2>
+              <p className="text-lg text-nxt-gray-500">분야별 AI 앱 예제와 템플릿을 둘러보세요</p>
             </div>
 
             {/* Category Tabs */}
@@ -275,8 +275,8 @@ export default function Home() {
                   key={category.name}
                   variant={selectedAppCategory === category.name ? "default" : "outline"}
                   className={selectedAppCategory === category.name ? 
-                    "bg-aws-orange text-white" : 
-                    "bg-white text-aws-gray-500 hover:bg-aws-gray-100"
+                    "bg-nxt-purple text-white" : 
+                    "bg-white text-nxt-gray-500 hover:bg-nxt-gray-100"
                   }
                   onClick={() => setSelectedAppCategory(category.name)}
                 >
@@ -295,11 +295,11 @@ export default function Home() {
               {appsLoading ? (
                 <div className="col-span-full text-center py-12">
                   <div className="spinner mx-auto mb-4"></div>
-                  <p className="text-aws-gray-500">앱 갤러리를 불러오는 중...</p>
+                  <p className="text-nxt-gray-500">앱 갤러리를 불러오는 중...</p>
                 </div>
               ) : apps.length === 0 ? (
                 <div className="col-span-full text-center py-12">
-                  <p className="text-aws-gray-500">등록된 앱이 없습니다.</p>
+                  <p className="text-nxt-gray-500">등록된 앱이 없습니다.</p>
                 </div>
               ) : (
                 apps.map((app) => (
@@ -312,20 +312,20 @@ export default function Home() {
           {/* Admin Tab */}
           <TabsContent value="admin" className="tab-content">
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-aws-dark mb-4">관리자 패널</h2>
-              <p className="text-lg text-aws-gray-500">콘텐츠 관리 및 시스템 설정</p>
+              <h2 className="text-3xl font-bold text-nxt-dark mb-4">관리자 패널</h2>
+              <p className="text-lg text-nxt-gray-500">콘텐츠 관리 및 시스템 설정</p>
             </div>
 
             {!isAdminAuthenticated ? (
               <div className="text-center py-12">
                 <div className="max-w-md mx-auto">
-                  <div className="w-20 h-20 bg-aws-orange/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Users className="text-aws-orange h-8 w-8" />
+                  <div className="w-20 h-20 bg-nxt-blue/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Users className="text-nxt-blue h-8 w-8" />
                   </div>
-                  <h3 className="text-xl font-bold text-aws-dark mb-4">관리자 인증이 필요합니다</h3>
-                  <p className="text-aws-gray-500 mb-6">관리자 기능에 접근하려면 인증 키를 입력해주세요.</p>
+                  <h3 className="text-xl font-bold text-nxt-dark mb-4">관리자 인증이 필요합니다</h3>
+                  <p className="text-nxt-gray-500 mb-6">관리자 기능에 접근하려면 인증 키를 입력해주세요.</p>
                   <Button 
-                    className="bg-aws-orange hover:bg-orange-600 text-white px-6 py-3"
+                    className="bg-nxt-blue hover:bg-blue-600 text-white px-6 py-3"
                     onClick={() => setShowAdminModal(true)}
                   >
                     인증하기
