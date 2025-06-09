@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Play, Eye, Star, X } from "lucide-react";
+import { Play, Eye, Star } from "lucide-react";
 import { useState, useRef } from "react";
 import type { Tutorial } from "@shared/schema";
 
@@ -108,22 +108,12 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
       {/* Video Player Modal */}
       <Dialog open={isVideoOpen} onOpenChange={handleCloseModal}>
         <DialogContent className="max-w-4xl max-h-[90vh]">
-          <div className="flex justify-between items-start mb-4">
-            <DialogHeader className="flex-1">
-              <DialogTitle className="text-nxt-dark">{tutorial.title}</DialogTitle>
-              <DialogDescription className="text-nxt-gray-500">
-                {tutorial.description}
-              </DialogDescription>
-            </DialogHeader>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => handleCloseModal(false)}
-              className="flex-shrink-0 h-8 w-8 p-0"
-            >
-              <X className="h-4 w-4" />
-            </Button>
-          </div>
+          <DialogHeader>
+            <DialogTitle className="text-nxt-dark">{tutorial.title}</DialogTitle>
+            <DialogDescription className="text-nxt-gray-500">
+              {tutorial.description}
+            </DialogDescription>
+          </DialogHeader>
           <div className="aspect-video">
             <video
               ref={videoRef}
