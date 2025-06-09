@@ -69,7 +69,7 @@ const uploadImage = multer({
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  const ADMIN_KEY = process.env.ADMIN_KEY || "partyrock-korea-2024";
+  const ADMIN_KEY = process.env.ADMIN_KEY || "nxtcloud-partyrock-admin";
 
   // Middleware to verify admin authentication
   const verifyAdmin = (req: any, res: any, next: any) => {
