@@ -43,6 +43,7 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
   };
 
   const handleCloseModal = (open: boolean) => {
+    console.log('handleCloseModal called with:', open);
     if (!open && videoRef.current) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
@@ -134,15 +135,13 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
             </video>
           </div>
           <div className="flex justify-center mt-4">
-            <DialogClose asChild>
-              <Button
-                onClick={handleCloseClick}
-                variant="outline"
-                className="px-6"
-              >
-                닫기
-              </Button>
-            </DialogClose>
+            <Button
+              onClick={() => handleCloseModal(false)}
+              variant="outline"
+              className="px-6"
+            >
+              닫기
+            </Button>
           </div>
         </DialogContent>
       </Dialog>
