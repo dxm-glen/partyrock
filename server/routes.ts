@@ -80,11 +80,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     next();
   };
 
-  // Serve uploaded files
+  // Serve uploaded files with explicit headers
   app.use('/uploads', (req, res, next) => {
     res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Cache-Control', 'public, max-age=31536000');
     next();
   }, express.static(uploadDir));
+
+  // Fallback for production - serve uploads from current directory
+  app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
   // Serve attached assets
   const attachedAssetsDir = path.join(process.cwd(), "attached_assets");
