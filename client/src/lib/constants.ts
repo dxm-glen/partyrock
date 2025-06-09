@@ -81,7 +81,7 @@ export const LEARNING_PATHS: LearningPath[] = [
   },
 ];
 
-export const TUTORIAL_CATEGORIES = ["전체", "가입 및 로그인 안내", "위젯 및 제작 실습", "데모 확인"];
+export const TUTORIAL_CATEGORIES = ["전체", "가입 및 로그인 안내", "위젯 및 제작 실습", "데모 확인", "샘플"];
 
 export const APP_CATEGORIES = [
   { name: "전체", count: null },
