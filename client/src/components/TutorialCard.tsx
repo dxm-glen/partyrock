@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Play, Eye, Star } from "lucide-react";
 import { useState, useRef } from "react";
@@ -134,13 +134,15 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
             </video>
           </div>
           <div className="flex justify-center mt-4">
-            <Button
-              onClick={handleCloseClick}
-              variant="outline"
-              className="px-6"
-            >
-              닫기
-            </Button>
+            <DialogClose asChild>
+              <Button
+                onClick={handleCloseClick}
+                variant="outline"
+                className="px-6"
+              >
+                닫기
+              </Button>
+            </DialogClose>
           </div>
         </DialogContent>
       </Dialog>
