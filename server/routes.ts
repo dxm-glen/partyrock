@@ -86,6 +86,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
     next();
   }, express.static(uploadDir));
 
+  // Serve attached assets
+  const attachedAssetsDir = path.join(process.cwd(), "attached_assets");
+  app.use('/assets', (req, res, next) => {
+    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+    next();
+  }, express.static(attachedAssetsDir));
+
   // Auth endpoints
   app.post('/api/auth/admin', (req, res) => {
     const { adminKey } = req.body;
