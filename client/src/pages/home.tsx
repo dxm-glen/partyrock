@@ -170,9 +170,7 @@ export default function Home() {
           <TabsContent value="learning" className="tab-content">
             <div className="mb-8">
               <h2 className="text-3xl font-bold text-nxt-dark mb-4">학습 센터</h2>
-              <p className="text-lg text-nxt-gray-500">
-                체계적인 3단계 학습 과정으로 AI 앱 개발 전문가가 되어보세요.
-              </p>
+              <p className="text-lg text-nxt-gray-500">체계적인 학습 과정으로 AI 앱 개발 전문가가 되어보세요.</p>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8 mb-12">
