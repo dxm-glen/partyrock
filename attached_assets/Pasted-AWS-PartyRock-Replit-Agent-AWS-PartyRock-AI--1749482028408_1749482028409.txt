@@ -1,0 +1,143 @@
+AWS PartyRock 한국 사용자 교육 포털 - Replit Agent 프롬프트
+프로젝트 개요
+AWS PartyRock의 노코드 AI 앱 빌더를 한국의 비개발자(대학생, 교직원, 공무원)에게 소개하는 전문적인 교육 포털을 개발해주세요. 사용자들이 AI 활용을 쉽게 시작할 수 있도록 돕는 것이 주요 목표입니다.
+핵심 기능 요구사항
+1. 페이지 구조
+
+메인 페이지: PartyRock 소개, 핵심 기능, 한국 사용자를 위한 혜택
+학습 센터: 3단계 학습 과정 (기초/응용/전문가)
+튜토리얼: 동영상 강의 목록 및 재생
+앱 갤러리: 카테고리별 예제 앱 쇼케이스
+관리자 패널: 콘텐츠 관리 시스템
+
+2. 관리자 인증 시스템
+javascript// 간단한 관리자 키 인증 구현
+const ADMIN_KEY = process.env.ADMIN_KEY || "partyrock-korea-2024";
+
+// 관리자 인증 모달
+function showAdminAuth() {
+  // 모달 창 표시
+  // 키 입력 필드
+  // 인증 성공 시 관리자 기능 활성화
+}
+3. 동영상 업로드 시스템
+
+파일 업로드: MP4, WebM 형식 지원
+메타데이터: 제목, 설명, 카테고리, 난이도
+썸네일 자동 생성
+진행률 추적 기능
+한국어 자막 파일(.srt, .vtt) 지원
+
+4. 앱 갤러리 구조
+javascript// 앱 데이터 구조
+const appGallery = {
+  categories: ["교육", "비즈니스", "정부/공공"],
+  apps: [
+    {
+      id: "app-001",
+      name: "논문 요약 도우미",
+      description: "PDF 논문을 업로드하면 핵심 내용을 한국어로 요약",
+      screenshot: "url",
+      partyRockLink: "https://partyrock.aws/...",
+      category: "교육",
+      difficulty: "초급"
+    }
+  ]
+};
+디자인 요구사항
+1. 전문적인 UI/UX
+
+색상: AWS 브랜드 색상 (주황색 #FF9900) + 전문적인 회색 톤
+폰트: Pretendard 또는 Noto Sans KR
+레이아웃: 깔끔하고 정보 계층이 명확한 구조
+반응형: 모바일, 태블릿, 데스크톱 완벽 지원
+
+2. 한국형 정보 구조
+
+탭 기반 네비게이션
+아코디언 메뉴로 깊이 있는 정보 제공
+사이드바에 빠른 접근 메뉴
+정보 밀도가 높은 대시보드 스타일
+
+데이터베이스 스키마
+1. 동영상 튜토리얼
+sqlCREATE TABLE tutorials (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  video_url VARCHAR(500),
+  thumbnail_url VARCHAR(500),
+  category VARCHAR(50),
+  difficulty VARCHAR(20),
+  duration INTEGER,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+2. 앱 갤러리
+sqlCREATE TABLE app_gallery (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  screenshot_url VARCHAR(500),
+  partyrock_link VARCHAR(500),
+  category VARCHAR(50),
+  difficulty VARCHAR(20),
+  use_case TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+특별 요구사항
+1. 한국어 최적화
+
+모든 인터페이스 텍스트는 자연스러운 한국어로
+존댓말 사용 (습니다체)
+기술 용어는 한글/영문 병기
+
+2. 학습 경로
+javascriptconst learningPaths = {
+  beginner: {
+    title: "PartyRock 시작하기",
+    modules: [
+      "생성형 AI 이해하기",
+      "PartyRock 계정 만들기",
+      "첫 번째 앱 만들기",
+      "위젯 활용법"
+    ]
+  },
+  intermediate: {
+    title: "실무 활용하기",
+    modules: [
+      "업무 자동화 도구 만들기",
+      "교육용 챗봇 개발",
+      "문서 분석 앱 제작"
+    ]
+  },
+  advanced: {
+    title: "전문가 과정",
+    modules: [
+      "복잡한 워크플로우 설계",
+      "다중 위젯 연동",
+      "프롬프트 엔지니어링 고급"
+    ]
+  }
+};
+3. 예제 앱 템플릿
+다음 카테고리의 예제 앱을 포함해주세요:
+교육 분야
+
+논문 요약 및 분석기
+강의 자료 생성기
+학습 계획 수립 도우미
+퀴즈 및 시험 문제 생성기
+
+비즈니스 분야
+
+회의록 자동 작성기
+보고서 템플릿 생성기
+고객 응대 챗봇
+데이터 시각화 도구
+
+정부/공공 분야
+
+정책 문서 요약기
+시민 문의 자동 응답
+공공 데이터 분석기
+민원 처리 도우미
