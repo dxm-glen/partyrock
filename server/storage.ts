@@ -67,9 +67,9 @@ export class DatabaseStorage implements IStorage {
     if (category && category !== '전체') {
       return await db.select().from(tutorials)
         .where(eq(tutorials.category, category))
-        .orderBy(desc(tutorials.createdAt));
+        .orderBy(tutorials.id);
     }
-    return await db.select().from(tutorials).orderBy(desc(tutorials.createdAt));
+    return await db.select().from(tutorials).orderBy(tutorials.id);
   }
 
   async getTutorial(id: number): Promise<Tutorial | undefined> {
