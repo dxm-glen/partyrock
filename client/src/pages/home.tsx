@@ -86,7 +86,6 @@ export default function Home() {
                     <Button className="bg-white text-nxt-blue hover:bg-gray-100 px-6 py-3 rounded-lg font-medium shadow-lg">
                       학습 시작하기
                     </Button>
-                    <Button variant="outline" className="border-2 border-white bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg font-medium text-white border-white shadow-lg">튜토리얼</Button>
                   </div>
                 </div>
                 <div className="hidden md:block">
