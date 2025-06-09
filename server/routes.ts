@@ -279,6 +279,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Serve video files
+  app.use('/uploads', express.static('uploads', {
+    setHeaders: (res, path) => {
+      if (path.endsWith('.mp4')) {
+        res.setHeader('Content-Type', 'video/mp4');
+        res.setHeader('Accept-Ranges', 'bytes');
+      }
+    }
+  }));
+
   const httpServer = createServer(app);
   return httpServer;
 }
