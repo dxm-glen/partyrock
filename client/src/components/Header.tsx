@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Cog } from "lucide-react";
 import nxtLogo from "@assets/image_1749483306062.png";
 
 interface HeaderProps {
@@ -22,7 +23,7 @@ export default function Header({ onAdminClick }: HeaderProps) {
             onClick={onAdminClick}
             className="text-nxt-gray-500 hover:text-nxt-blue"
           >
-            관리자
+            <Cog className="h-5 w-5" />
           </Button>
         </div>
       </div>
