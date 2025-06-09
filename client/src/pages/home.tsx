@@ -31,6 +31,7 @@ export default function Home() {
   const [showAdminModal, setShowAdminModal] = useState(false);
   const [selectedTutorialCategory, setSelectedTutorialCategory] = useState("전체");
   const [selectedAppCategory, setSelectedAppCategory] = useState("전체");
+  const [activeTab, setActiveTab] = useState("home");
 
   // Fetch tutorials
   const { data: tutorials = [], isLoading: tutorialsLoading } = useQuery<Tutorial[]>({
@@ -59,7 +60,7 @@ export default function Home() {
     <div className="min-h-screen bg-nxt-gray-50">
       <Header onAdminClick={() => setShowAdminModal(true)} />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Tabs defaultValue="home" className="w-full">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-5 mb-8">
             <TabsTrigger value="home">홈</TabsTrigger>
             <TabsTrigger value="tutorials">튜토리얼</TabsTrigger>
@@ -83,8 +84,11 @@ export default function Home() {
                     대학생, 교직원, 공무원을 위한 전문 교육 과정을 제공합니다.
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <Button className="bg-white text-nxt-blue hover:bg-gray-100 px-6 py-3 rounded-lg font-medium shadow-lg">
-                      학습 시작하기
+                    <Button 
+                      className="bg-white text-nxt-blue hover:bg-gray-100 px-6 py-3 rounded-lg font-medium shadow-lg"
+                      onClick={() => setActiveTab('tutorials')}
+                    >
+                      튜토리얼 영상 보기
                     </Button>
                   </div>
                 </div>
