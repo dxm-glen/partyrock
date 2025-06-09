@@ -18,6 +18,14 @@ import { Brain, GraduationCap, Users, Video, Smartphone, Users as UsersIcon, Upl
 import { LEARNING_PATHS, TUTORIAL_CATEGORIES, APP_CATEGORIES } from "@/lib/constants";
 import type { Tutorial, AppGalleryItem } from "@shared/schema";
 
+interface AdminStats {
+  totalTutorials: number;
+  totalApps: number;
+  totalViews: number;
+  recentTutorials: Tutorial[];
+  recentApps: AppGalleryItem[];
+}
+
 export default function Home() {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [showAdminModal, setShowAdminModal] = useState(false);
@@ -37,7 +45,7 @@ export default function Home() {
   });
 
   // Fetch admin stats
-  const { data: adminStats } = useQuery({
+  const { data: adminStats } = useQuery<AdminStats>({
     queryKey: ['/api/admin/stats'],
     enabled: isAdminAuthenticated,
   });
@@ -339,30 +347,30 @@ export default function Home() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                          <Video className="text-blue-600 h-6 w-6" />
+                        <div className="w-12 h-12 bg-nxt-blue/10 rounded-lg flex items-center justify-center">
+                          <Video className="text-nxt-blue h-6 w-6" />
                         </div>
-                        <span className="text-sm text-aws-gray-500">전체</span>
+                        <span className="text-sm text-nxt-gray-500">전체</span>
                       </div>
-                      <div className="text-2xl font-bold text-aws-dark mb-2">
+                      <div className="text-2xl font-bold text-nxt-dark mb-2">
                         {adminStats?.totalTutorials || 0}
                       </div>
-                      <div className="text-sm text-aws-gray-500">튜토리얼 영상</div>
+                      <div className="text-sm text-nxt-gray-500">튜토리얼 영상</div>
                     </CardContent>
                   </Card>
 
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                          <Smartphone className="text-green-600 h-6 w-6" />
+                        <div className="w-12 h-12 bg-nxt-purple/10 rounded-lg flex items-center justify-center">
+                          <Smartphone className="text-nxt-purple h-6 w-6" />
                         </div>
-                        <span className="text-sm text-aws-gray-500">승인됨</span>
+                        <span className="text-sm text-nxt-gray-500">승인됨</span>
                       </div>
-                      <div className="text-2xl font-bold text-aws-dark mb-2">
+                      <div className="text-2xl font-bold text-nxt-dark mb-2">
                         {adminStats?.totalApps || 0}
                       </div>
-                      <div className="text-sm text-aws-gray-500">갤러리 앱</div>
+                      <div className="text-sm text-nxt-gray-500">갤러리 앱</div>
                     </CardContent>
                   </Card>
 
