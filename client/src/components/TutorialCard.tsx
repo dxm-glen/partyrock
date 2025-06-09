@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Play, Eye, Star } from "lucide-react";
 import { useState, useRef } from "react";
@@ -116,7 +116,7 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
 
       {/* Video Player Modal */}
       <Dialog open={isVideoOpen} onOpenChange={handleCloseModal}>
-        <DialogContent className="max-w-4xl max-h-[90vh]">
+        <DialogContent className="max-w-4xl max-h-[90vh] [&>button]:hidden">
           <DialogHeader>
             <DialogTitle className="text-nxt-dark">{tutorial.title}</DialogTitle>
             <DialogDescription className="text-nxt-gray-500">
