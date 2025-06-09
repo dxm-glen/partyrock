@@ -158,7 +158,7 @@ export default function Home() {
                     <div className="text-nxt-gray-500">활성 사용자</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-purple-600 mb-2">3</div>
+                    <div className="text-3xl font-bold text-purple-600 mb-2">2</div>
                     <div className="text-nxt-gray-500">학습 단계</div>
                   </div>
                 </div>
