@@ -80,25 +80,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     next();
   };
 
-  // Serve uploaded files with explicit headers and compression
-  app.use('/uploads', (req, res, next) => {
-    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 'public, max-age=31536000');
-    res.setHeader('Accept-Ranges', 'bytes');
-    // Enable gzip for non-video files
-    if (!req.path.match(/\.(mp4|webm|mov)$/i)) {
-      res.setHeader('Content-Encoding', 'gzip');
-    }
-    next();
-  }, express.static(uploadDir, {
+  // Note: Videos now hosted on AWS S3, local uploads only for images/assets
+  app.use('/uploads', express.static(uploadDir, {
     maxAge: '1y',
     etag: true,
     lastModified: true
   }));
-
-  // Fallback for production - serve uploads from current directory
-  app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
   // Serve attached assets
   const attachedAssetsDir = path.join(process.cwd(), "attached_assets");
@@ -173,7 +160,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   app.post('/api/tutorials', verifyAdmin, uploadVideo.fields([
-    { name: 'video', maxCount: 1 },
     { name: 'thumbnail', maxCount: 1 },
     { name: 'subtitle', maxCount: 1 }
   ]), async (req, res) => {
@@ -186,7 +172,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         category: req.body.category,
         difficulty: req.body.difficulty,
         duration: parseInt(req.body.duration) || 0,
-        videoUrl: files.video ? `/uploads/videos/${files.video[0].filename}` : null,
+        videoUrl: req.body.videoUrl, // Now expecting S3 URL from client
         thumbnailUrl: files.thumbnail ? `/uploads/images/${files.thumbnail[0].filename}` : null,
         subtitleUrl: files.subtitle ? `/uploads/subtitles/${files.subtitle[0].filename}` : null,
       };

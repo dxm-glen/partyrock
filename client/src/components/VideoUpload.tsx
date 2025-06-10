@@ -20,9 +20,9 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
     category: "",
     difficulty: "",
     duration: "",
+    videoUrl: "", // S3 URL input
   });
   const [selectedFiles, setSelectedFiles] = useState<{
-    video?: File;
     thumbnail?: File;
     subtitle?: File;
   }>({});
@@ -59,6 +59,7 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
         category: "",
         difficulty: "",
         duration: "",
+        videoUrl: "",
       });
       setSelectedFiles({});
       
@@ -75,20 +76,13 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
     },
   });
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (files && files.length > 0) {
-      setSelectedFiles(prev => ({ ...prev, video: files[0] }));
-    }
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!selectedFiles.video) {
+    if (!formData.videoUrl) {
       toast({
-        title: "파일을 선택해주세요",
-        description: "동영상 파일을 선택해주세요.",
+        title: "비디오 URL을 입력해주세요",
+        description: "AWS S3 비디오 URL을 입력해주세요.",
         variant: "destructive",
       });
       return;
@@ -100,10 +94,8 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
     submitData.append("category", formData.category);
     submitData.append("difficulty", formData.difficulty);
     submitData.append("duration", formData.duration);
+    submitData.append("videoUrl", formData.videoUrl);
     
-    if (selectedFiles.video) {
-      submitData.append("video", selectedFiles.video);
-    }
     if (selectedFiles.thumbnail) {
       submitData.append("thumbnail", selectedFiles.thumbnail);
     }
@@ -114,17 +106,7 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
     uploadMutation.mutate(submitData);
   };
 
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-  };
 
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    const files = e.dataTransfer.files;
-    if (files.length > 0) {
-      setSelectedFiles(prev => ({ ...prev, video: files[0] }));
-    }
-  };
 
   return (
     <Card>
@@ -135,32 +117,19 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div
-            className="border-2 border-dashed border-nxt-gray-200 rounded-lg p-8 text-center hover:border-nxt-blue transition-colors cursor-pointer mb-6"
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            onClick={() => fileInputRef.current?.click()}
-          >
-            <div className="w-16 h-16 bg-nxt-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CloudUploadIcon className="text-nxt-blue h-6 w-6" />
-            </div>
-            <div className="text-nxt-dark font-medium mb-2">
-              {selectedFiles.video ? selectedFiles.video.name : "동영상 파일을 끌어다 놓거나 클릭하여 업로드"}
-            </div>
-            <div className="text-sm text-nxt-gray-500 mb-4">MP4, WebM 형식 지원 (최대 500MB)</div>
-            <Button
-              type="button"
-              className="bg-nxt-blue hover:bg-blue-600 text-white text-sm"
-            >
-              파일 선택
-            </Button>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="video/mp4,video/webm"
-              onChange={handleFileSelect}
-              className="hidden"
+          <div className="mb-6">
+            <Label htmlFor="videoUrl">비디오 URL (AWS S3)</Label>
+            <Input
+              id="videoUrl"
+              placeholder="https://partyrock-guide-nxtcloud.s3.ap-northeast-2.amazonaws.com/video.mp4"
+              value={formData.videoUrl}
+              onChange={(e) => setFormData(prev => ({ ...prev, videoUrl: e.target.value }))}
+              required
+              className="mt-2"
             />
+            <div className="text-sm text-gray-500 mt-1">
+              AWS S3에 업로드된 비디오 파일의 전체 URL을 입력하세요
+            </div>
           </div>
 
           <div className="space-y-4">
