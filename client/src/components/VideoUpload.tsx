@@ -27,7 +27,7 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
     subtitle?: File;
   }>({});
   
-  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const { toast } = useToast();
 
   const uploadMutation = useMutation({
