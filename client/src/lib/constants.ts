@@ -62,7 +62,7 @@ export const LEARNING_PATHS: LearningPath[] = [
   },
 ];
 
-export const TUTORIAL_CATEGORIES = ["전체", "가입 및 로그인 안내", "위젯 및 제작 실습", "데모 확인"];
+// Removed TUTORIAL_CATEGORIES - no longer using category filtering
 
 export const APP_CATEGORIES = [
   { name: "전체", count: null },

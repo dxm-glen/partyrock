@@ -15,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Brain, GraduationCap, Users, Video, Smartphone, Users as UsersIcon, Upload, CloudUploadIcon, ImageIcon } from "lucide-react";
-import { LEARNING_PATHS, TUTORIAL_CATEGORIES, APP_CATEGORIES } from "@/lib/constants";
+import { LEARNING_PATHS, APP_CATEGORIES } from "@/lib/constants";
 import type { Tutorial, AppGalleryItem } from "@shared/schema";
 
 interface AdminStats {
@@ -29,13 +29,13 @@ interface AdminStats {
 export default function Home() {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [showAdminModal, setShowAdminModal] = useState(false);
-  const [selectedTutorialCategory, setSelectedTutorialCategory] = useState("전체");
+
   const [selectedAppCategory, setSelectedAppCategory] = useState("전체");
   const [activeTab, setActiveTab] = useState("home");
 
   // Fetch tutorials
   const { data: tutorials = [], isLoading: tutorialsLoading } = useQuery<Tutorial[]>({
-    queryKey: ['/api/tutorials', selectedTutorialCategory],
+    queryKey: ['/api/tutorials'],
     enabled: true,
   });
 
@@ -224,8 +224,6 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-nxt-dark mb-4">튜토리얼</h2>
               <p className="text-lg text-nxt-gray-500">동영상으로 배우는 PartyRock 완전정복</p>
             </div>
-
-
 
             {/* Tutorial Grid */}
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
