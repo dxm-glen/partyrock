@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { CloudUploadIcon } from "lucide-react";
 
 interface VideoUploadProps {
   onUploadSuccess?: () => void;
@@ -112,8 +111,8 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
     <Card>
       <CardContent className="p-6">
         <div className="border-b border-nxt-gray-100 pb-4 mb-6">
-          <h3 className="text-lg font-bold text-nxt-dark mb-2">동영상 업로드</h3>
-          <p className="text-sm text-nxt-gray-500">새로운 튜토리얼 영상을 업로드하고 관리하세요.</p>
+          <h3 className="text-lg font-bold text-nxt-dark mb-2">튜토리얼 등록</h3>
+          <p className="text-sm text-nxt-gray-500">AWS S3 비디오 URL로 새로운 튜토리얼을 등록하세요.</p>
         </div>
 
         <form onSubmit={handleSubmit}>
