@@ -3,41 +3,7 @@ import express from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertTutorialSchema, insertAppSchema } from "@shared/schema";
-import multer from "multer";
-import path from "path";
-import fs from "fs";
-
-// Configure multer for non-video file uploads (thumbnails, subtitles)
-const uploadDir = path.join(process.cwd(), "uploads");
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-const imageStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const imageDir = path.join(uploadDir, "images");
-    if (!fs.existsSync(imageDir)) {
-      fs.mkdirSync(imageDir, { recursive: true });
-    }
-    cb(null, imageDir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-  }
-});
-
-const uploadFiles = multer({ 
-  storage: imageStorage,
-  fileFilter: (req, file, cb) => {
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'text/plain', 'application/x-subrip'];
-    if (allowedTypes.includes(file.mimetype) || file.mimetype.startsWith('text/')) {
-      cb(null, true);
-    } else {
-      cb(new Error('Invalid file type. Only images and subtitle files are allowed.'));
-    }
-  }
-});
+// Removed multer configuration - now using S3 URLs directly
 
 export async function registerRoutes(app: Express): Promise<Server> {
   const ADMIN_KEY = process.env.ADMIN_KEY || "nxtcloud-partyrock-admin";
@@ -51,23 +17,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     next();
   };
 
-  // Note: Videos now hosted on AWS S3, local uploads only for images/assets
-  app.use('/uploads', express.static(uploadDir, {
-    maxAge: '1y',
-    etag: true,
-    lastModified: true
-  }));
-
   // Serve attached assets
-  const attachedAssetsDir = path.join(process.cwd(), "attached_assets");
   app.use('/assets', (req, res, next) => {
     res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
     next();
-  }, express.static(attachedAssetsDir));
-
-
-
-
+  }, express.static("./attached_assets"));
 
   // Auth endpoints
   app.post('/api/auth/admin', (req, res) => {
@@ -107,22 +61,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post('/api/tutorials', verifyAdmin, uploadFiles.fields([
-    { name: 'thumbnail', maxCount: 1 },
-    { name: 'subtitle', maxCount: 1 }
-  ]), async (req, res) => {
+  app.post('/api/tutorials', verifyAdmin, async (req, res) => {
     try {
-      const files = req.files as { [fieldname: string]: Express.Multer.File[] };
-      
       const tutorialData = {
         title: req.body.title,
         description: req.body.description,
         category: req.body.category,
         difficulty: req.body.difficulty,
         duration: parseInt(req.body.duration) || 0,
-        videoUrl: req.body.videoUrl, // Now expecting S3 URL from client
-        thumbnailUrl: files.thumbnail ? `/uploads/images/${files.thumbnail[0].filename}` : null,
-        subtitleUrl: files.subtitle ? `/uploads/subtitles/${files.subtitle[0].filename}` : null,
+        videoUrl: req.body.videoUrl, // S3 URL from client
+        thumbnailUrl: req.body.thumbnailUrl, // Optional S3 thumbnail URL
+        subtitleUrl: req.body.subtitleUrl, // Optional S3 subtitle URL
       };
 
       const validatedData = insertTutorialSchema.parse(tutorialData);
@@ -188,10 +137,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post('/api/apps', verifyAdmin, uploadFiles.single('screenshot'), async (req, res) => {
+  app.post('/api/apps', verifyAdmin, async (req, res) => {
     try {
-      const file = req.file;
-      
       const appData = {
         name: req.body.name,
         description: req.body.description,
@@ -199,7 +146,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         category: req.body.category,
         difficulty: req.body.difficulty,
         useCase: req.body.useCase,
-        screenshotUrl: file ? `/uploads/images/${file.filename}` : null,
+        screenshotUrl: req.body.screenshotUrl, // S3 URL from client
       };
 
       const validatedData = insertAppSchema.parse(appData);
