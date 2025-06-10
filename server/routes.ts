@@ -7,25 +7,11 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 
-// Configure multer for file uploads
+// Configure multer for non-video file uploads (thumbnails, subtitles)
 const uploadDir = path.join(process.cwd(), "uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
-
-const videoStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const videoDir = path.join(uploadDir, "videos");
-    if (!fs.existsSync(videoDir)) {
-      fs.mkdirSync(videoDir, { recursive: true });
-    }
-    cb(null, videoDir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-  }
-});
 
 const imageStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -41,29 +27,14 @@ const imageStorage = multer.diskStorage({
   }
 });
 
-const uploadVideo = multer({ 
-  storage: videoStorage,
-  fileFilter: (req, file, cb) => {
-    const allowedTypes = ['video/mp4', 'video/webm'];
-    if (allowedTypes.includes(file.mimetype)) {
-      cb(null, true);
-    } else {
-      cb(new Error('Invalid file type. Only MP4 and WebM videos are allowed.'));
-    }
-  },
-  limits: {
-    fileSize: 500 * 1024 * 1024 // 500MB limit
-  }
-});
-
-const uploadImage = multer({ 
+const uploadFiles = multer({ 
   storage: imageStorage,
   fileFilter: (req, file, cb) => {
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
-    if (allowedTypes.includes(file.mimetype)) {
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'text/plain', 'application/x-subrip'];
+    if (allowedTypes.includes(file.mimetype) || file.mimetype.startsWith('text/')) {
       cb(null, true);
     } else {
-      cb(new Error('Invalid file type. Only JPEG, PNG, and WebP images are allowed.'));
+      cb(new Error('Invalid file type. Only images and subtitle files are allowed.'));
     }
   }
 });
@@ -96,30 +67,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
 
 
-  // Debug endpoint to check file availability
-  app.get('/api/debug/files', async (req, res) => {
-    try {
-      const uploadsPath = path.join(process.cwd(), 'uploads');
-      const publicUploadsPath = path.join(process.cwd(), 'client/public/uploads');
-      
-      const checkDir = (dirPath: string) => {
-        try {
-          return fs.existsSync(dirPath) ? fs.readdirSync(dirPath) : [];
-        } catch {
-          return [];
-        }
-      };
-      
-      res.json({
-        uploads: checkDir(uploadsPath),
-        publicUploads: checkDir(publicUploadsPath),
-        cwd: process.cwd(),
-        env: process.env.NODE_ENV
-      });
-    } catch (error: any) {
-      res.status(500).json({ error: error.message });
-    }
-  });
+
 
   // Auth endpoints
   app.post('/api/auth/admin', (req, res) => {
@@ -159,7 +107,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post('/api/tutorials', verifyAdmin, uploadVideo.fields([
+  app.post('/api/tutorials', verifyAdmin, uploadFiles.fields([
     { name: 'thumbnail', maxCount: 1 },
     { name: 'subtitle', maxCount: 1 }
   ]), async (req, res) => {
@@ -240,7 +188,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post('/api/apps', verifyAdmin, uploadImage.single('screenshot'), async (req, res) => {
+  app.post('/api/apps', verifyAdmin, uploadFiles.single('screenshot'), async (req, res) => {
     try {
       const file = req.file;
       
