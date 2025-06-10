@@ -311,19 +311,27 @@ app.post('/api/tutorials', verifyAdmin, async (req, res) => {
 });
 ```
 
-#### 2. 파일 업로드 처리
+#### 2. S3 URL 기반 콘텐츠 관리 (최신)
 ```typescript
-const uploadVideo = multer({
-  storage: multer.diskStorage({
-    destination: 'uploads/videos',
-    filename: (req, file, cb) => {
-      const uniqueName = `${Date.now()}-${file.originalname}`;
-      cb(null, uniqueName);
-    }
-  }),
-  fileFilter: (req, file, cb) => {
-    const allowedTypes = ['video/mp4', 'video/webm'];
-    cb(null, allowedTypes.includes(file.mimetype));
+// POST - S3 URL을 통한 튜토리얼 생성
+app.post('/api/tutorials', verifyAdmin, async (req, res) => {
+  try {
+    const tutorialData = {
+      title: req.body.title,
+      description: req.body.description,
+      category: req.body.category,
+      difficulty: req.body.difficulty,
+      duration: parseInt(req.body.duration) || 0,
+      videoUrl: req.body.videoUrl, // S3 URL 직접 입력
+      thumbnailUrl: req.body.thumbnailUrl, // 선택적 S3 썸네일 URL
+      subtitleUrl: req.body.subtitleUrl, // 선택적 S3 자막 URL
+    };
+
+    const validatedData = insertTutorialSchema.parse(tutorialData);
+    const tutorial = await storage.createTutorial(validatedData);
+    res.json(tutorial);
+  } catch (error) {
+    res.status(400).json({ message: "튜토리얼 생성 중 오류가 발생했습니다." });
   }
 });
 ```
@@ -582,10 +590,17 @@ if (process.env.NODE_ENV === 'development') {
 ```
 
 ### 일반적인 문제 해결
-- **CORS 오류**: 서버 설정 확인
+- **CORS 오류**: S3 버킷 CORS 정책 및 서버 설정 확인
 - **404 오류**: 라우트 경로 확인
 - **인증 실패**: 관리자 키 확인
-- **파일 업로드 실패**: Multer 설정 및 파일 크기 확인
+- **비디오 재생 실패**: S3 URL 접근성 및 권한 확인
+- **의존성 오류**: package.json 및 타입 정의 확인
+
+### 코드 리팩토링 이후 변경사항 (2025-06-10)
+- **multer 제거**: 파일 업로드 관련 코드를 S3 URL 방식으로 대체
+- **카테고리 필터링 제거**: UI 단순화를 위해 튜토리얼 카테고리 필터 제거
+- **의존성 최적화**: 미사용 패키지 정리로 빌드 성능 향상
+- **타입 오류 해결**: TypeScript 컴파일 오류 완전 해결
 
 ---
 
