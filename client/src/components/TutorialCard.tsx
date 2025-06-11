@@ -84,6 +84,15 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
             preload="metadata"
             muted
             onLoadedMetadata={handleThumbnailVideoLoad}
+            controlsList="nodownload"
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
+            style={{ 
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              MozUserSelect: 'none',
+              msUserSelect: 'none'
+            }}
           />
         ) : (
           <div className="w-full h-48 bg-nxt-gray-200 flex items-center justify-center">
@@ -140,16 +149,22 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
               {tutorial.description}
             </DialogDescription>
           </DialogHeader>
-          <div className="aspect-video">
+          <div className="aspect-video video-container">
             <video
               ref={videoRef}
               controls
               autoPlay
               className="w-full h-full rounded-lg"
               src={tutorial.videoUrl ?? undefined}
-              controlsList="nodownload"
+              controlsList="nodownload noremoteplayback"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
+              onKeyDown={(e) => {
+                // Prevent keyboard shortcuts for downloading/saving
+                if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+                  e.preventDefault();
+                }
+              }}
               style={{ 
                 userSelect: 'none',
                 WebkitUserSelect: 'none',

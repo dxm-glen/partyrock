@@ -20,6 +20,29 @@ app.use(compression({
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Security headers to prevent video downloads
+app.use((req, res, next) => {
+  // Prevent caching of video content
+  if (req.path.match(/\.(mp4|webm|mov)$/i)) {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+  }
+  
+  // Security headers
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  
+  // Prevent video download via Content-Disposition
+  if (req.path.match(/\.(mp4|webm|mov)$/i)) {
+    res.setHeader('Content-Disposition', 'inline; filename=""');
+  }
+  
+  next();
+});
+
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
