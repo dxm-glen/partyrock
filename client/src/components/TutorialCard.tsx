@@ -147,6 +147,15 @@ export default function TutorialCard({ tutorial }: TutorialCardProps) {
               autoPlay
               className="w-full h-full rounded-lg"
               src={tutorial.videoUrl ?? undefined}
+              controlsList="nodownload"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
+              style={{ 
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
+                MozUserSelect: 'none',
+                msUserSelect: 'none'
+              }}
             >
               죄송합니다. 브라우저에서 동영상을 재생할 수 없습니다.
             </video>
