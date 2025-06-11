@@ -179,6 +179,111 @@ curl -I https://partyrock-guide-nxtcloud.s3.ap-northeast-2.amazonaws.com/signup-
 # 기대 응답: HTTP/1.1 200 OK
 ```
 
+### 비디오 보안 및 다운로드 방지
+
+#### 클라이언트 측 보안
+```typescript
+// TutorialCard.tsx - 비디오 보안 설정
+<video
+  controlsList="nodownload noremoteplayback"
+  onContextMenu={(e) => e.preventDefault()}
+  onDragStart={(e) => e.preventDefault()}
+  onKeyDown={(e) => {
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+      e.preventDefault();
+    }
+  }}
+  style={{ 
+    userSelect: 'none',
+    WebkitUserSelect: 'none',
+    MozUserSelect: 'none',
+    msUserSelect: 'none'
+  }}
+/>
+```
+
+#### 전역 키보드 이벤트 차단
+```typescript
+// App.tsx - 전역 보안 설정
+useEffect(() => {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    // Ctrl+S (Save) 방지
+    if (e.ctrlKey && e.key === 's') {
+      e.preventDefault();
+      return false;
+    }
+    
+    // F12 (Developer Tools) 방지
+    if (e.key === 'F12') {
+      e.preventDefault();
+      return false;
+    }
+    
+    // Ctrl+Shift+I (Developer Tools) 방지
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+      return false;
+    }
+    
+    // Ctrl+U (View Source) 방지
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+      return false;
+    }
+  };
+  
+  document.addEventListener('keydown', handleKeyDown);
+  return () => document.removeEventListener('keydown', handleKeyDown);
+}, []);
+```
+
+#### CSS 기반 보안
+```css
+/* index.css - 비디오 다운로드 방지 */
+video {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: auto;
+}
+
+video::-webkit-media-controls-download-button {
+  display: none !important;
+}
+
+video[controlsList="nodownload"] {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+```
+
+#### 서버 측 보안 헤더
+```typescript
+// server/index.ts - 보안 헤더 설정
+app.use((req, res, next) => {
+  // 비디오 캐싱 방지
+  if (req.path.match(/\.(mp4|webm|mov)$/i)) {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    res.setHeader('Content-Disposition', 'inline; filename=""');
+  }
+  
+  // 기본 보안 헤더
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  
+  next();
+});
+```
+
 ## 🎨 프론트엔드 개발
 
 ### 프로젝트 구조
