@@ -54,8 +54,11 @@ export default function Home() {
     enabled: isAdminAuthenticated,
   });
 
-  const handleAdminAuth = (success: boolean) => {
+  const handleAdminAuth = (success: boolean, key?: string) => {
     setIsAdminAuthenticated(success);
+    if (success && key) {
+      setAdminKey(key);
+    }
     setShowAdminModal(false);
   };
 
@@ -379,6 +382,26 @@ export default function Home() {
                   </Card>
                 </div>
 
+                {/* Admin Settings */}
+                <div className="mb-8">
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="border-b border-nxt-gray-100 pb-4 mb-6">
+                        <h3 className="text-lg font-bold text-nxt-dark mb-2">관리자 설정</h3>
+                        <p className="text-sm text-nxt-gray-500">시스템 설정 및 보안 관리</p>
+                      </div>
+                      
+                      <Button 
+                        onClick={() => setShowPasswordChangeModal(true)}
+                        variant="outline"
+                        className="mb-4"
+                      >
+                        관리자 비밀번호 변경
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+
                 {/* Content Management Sections */}
                 <div className="grid lg:grid-cols-2 gap-8">
                   <VideoUpload onUploadSuccess={() => {
@@ -464,6 +487,11 @@ export default function Home() {
         isOpen={showAdminModal}
         onClose={() => setShowAdminModal(false)}
         onAuth={handleAdminAuth}
+      />
+      <AdminPasswordChange
+        isOpen={showPasswordChangeModal}
+        onClose={() => setShowPasswordChangeModal(false)}
+        adminKey={adminKey}
       />
     </div>
   );

@@ -11,7 +11,7 @@ import { KeyIcon } from "lucide-react";
 interface AdminAuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onAuth: (success: boolean) => void;
+  onAuth: (success: boolean, key?: string) => void;
 }
 
 export default function AdminAuthModal({ isOpen, onClose, onAuth }: AdminAuthModalProps) {
@@ -29,7 +29,7 @@ export default function AdminAuthModal({ isOpen, onClose, onAuth }: AdminAuthMod
         title: "인증 성공",
         description: "관리자 인증이 완료되었습니다.",
       });
-      onAuth(true);
+      onAuth(true, adminKey);
       setAdminKey("");
       setError("");
     },

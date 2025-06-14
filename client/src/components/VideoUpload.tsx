@@ -10,9 +10,10 @@ import { useToast } from "@/hooks/use-toast";
 
 interface VideoUploadProps {
   onUploadSuccess?: () => void;
+  adminKey?: string;
 }
 
-export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
+export default function VideoUpload({ onUploadSuccess, adminKey }: VideoUploadProps) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -34,7 +35,7 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-Admin-Key": "nxtcloud-partyrock-admin",
+          "X-Admin-Key": adminKey || "16!^109a",
         },
         body: JSON.stringify(tutorialData),
       });
