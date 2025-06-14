@@ -22,7 +22,7 @@ export interface IStorage {
   createUser(user: InsertUser): Promise<User>;
   
   // Tutorial methods
-  getTutorials(category?: string): Promise<Tutorial[]>;
+  getTutorials(category?: string, publishedOnly?: boolean): Promise<Tutorial[]>;
   getTutorial(id: number): Promise<Tutorial | undefined>;
   createTutorial(tutorial: InsertTutorial): Promise<Tutorial>;
   updateTutorial(id: number, tutorial: Partial<InsertTutorial>): Promise<Tutorial | undefined>;

@@ -47,7 +47,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get('/api/tutorials', async (req, res) => {
     try {
       const category = req.query.category as string;
-      const tutorials = await storage.getTutorials(category);
+      const tutorials = await storage.getTutorials(category, true); // Only published tutorials
+      res.json(tutorials);
+    } catch (error) {
+      res.status(500).json({ message: "튜토리얼을 불러오는 중 오류가 발생했습니다." });
+    }
+  });
+
+  // Admin endpoint to get all tutorials (including unpublished)
+  app.get('/api/admin/tutorials', verifyAdmin, async (req, res) => {
+    try {
+      const category = req.query.category as string;
+      const tutorials = await storage.getTutorials(category, false); // All tutorials
       res.json(tutorials);
     } catch (error) {
       res.status(500).json({ message: "튜토리얼을 불러오는 중 오류가 발생했습니다." });
@@ -93,6 +104,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   app.put('/api/tutorials/:id', verifyAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const validatedData = insertTutorialSchema.partial().parse(req.body);
+      const tutorial = await storage.updateTutorial(id, validatedData);
+      
+      if (!tutorial) {
+        return res.status(404).json({ message: "튜토리얼을 찾을 수 없습니다." });
+      }
+      
+      res.json(tutorial);
+    } catch (error) {
+      res.status(400).json({ message: "튜토리얼 수정 중 오류가 발생했습니다." });
+    }
+  });
+
+  app.patch('/api/tutorials/:id', verifyAdmin, async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       const validatedData = insertTutorialSchema.partial().parse(req.body);

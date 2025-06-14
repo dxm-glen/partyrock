@@ -21,6 +21,7 @@ export const tutorials = pgTable("tutorials", {
   duration: integer("duration"), // in seconds
   views: integer("views").default(0),
   rating: integer("rating").default(0), // 1-5 scale * 10 (e.g., 48 = 4.8)
+  published: boolean("published").default(true),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
