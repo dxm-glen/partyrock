@@ -404,10 +404,13 @@ export default function Home() {
 
                 {/* Content Management Sections */}
                 <div className="grid lg:grid-cols-2 gap-8">
-                  <VideoUpload onUploadSuccess={() => {
-                    // Refresh tutorials list
-                    window.location.reload();
-                  }} />
+                  <VideoUpload 
+                    adminKey={adminKey}
+                    onUploadSuccess={() => {
+                      // Refresh tutorials list
+                      window.location.reload();
+                    }} 
+                  />
 
                   {/* App Gallery Management */}
                   <Card>
