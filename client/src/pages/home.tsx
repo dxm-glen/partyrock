@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/Header";
 import AdminAuthModal from "@/components/AdminAuthModal";
 import AdminPasswordChange from "@/components/AdminPasswordChange";
+import TutorialManagement from "@/components/TutorialManagement";
 import VideoUpload from "@/components/VideoUpload";
 import AppGalleryCard from "@/components/AppGalleryCard";
 import TutorialCard from "@/components/TutorialCard";
@@ -403,7 +404,7 @@ export default function Home() {
                 </div>
 
                 {/* Content Management Sections */}
-                <div className="grid lg:grid-cols-2 gap-8">
+                <div className="grid lg:grid-cols-2 gap-8 mb-8">
                   <VideoUpload 
                     adminKey={adminKey}
                     onUploadSuccess={() => {
@@ -481,6 +482,9 @@ export default function Home() {
                     </CardContent>
                   </Card>
                 </div>
+
+                {/* Tutorial Management Section */}
+                <TutorialManagement adminKey={adminKey} />
               </div>
             )}
           </TabsContent>

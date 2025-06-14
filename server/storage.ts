@@ -63,12 +63,25 @@ export class DatabaseStorage implements IStorage {
   }
 
   // Tutorial methods
-  async getTutorials(category?: string): Promise<Tutorial[]> {
+  async getTutorials(category?: string, publishedOnly: boolean = true): Promise<Tutorial[]> {
     if (category && category !== '전체') {
+      if (publishedOnly) {
+        return await db.select().from(tutorials)
+          .where(and(eq(tutorials.category, category), eq(tutorials.published, true)))
+          .orderBy(tutorials.id);
+      } else {
+        return await db.select().from(tutorials)
+          .where(eq(tutorials.category, category))
+          .orderBy(tutorials.id);
+      }
+    }
+    
+    if (publishedOnly) {
       return await db.select().from(tutorials)
-        .where(eq(tutorials.category, category))
+        .where(eq(tutorials.published, true))
         .orderBy(tutorials.id);
     }
+    
     return await db.select().from(tutorials).orderBy(tutorials.id);
   }
 
