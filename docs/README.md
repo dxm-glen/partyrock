@@ -1,175 +1,99 @@
-# AWS PartyRock 한국어 학습 플랫폼
+# Korean Language Learning Platform - Documentation
 
-AWS PartyRock을 활용한 노코드 AI 애플리케이션 개발 학습 플랫폼입니다.
+## Platform Overview
+Comprehensive multimedia education platform featuring AWS PartyRock tutorial content with advanced security and administrative capabilities.
 
-## 최신 업데이트 (2025.06.10)
-- ✅ AWS S3 비디오 호스팅으로 마이그레이션 완료
-- ✅ 배포 환경 비디오 재생 문제 해결  
-- ✅ 성능 최적화 및 안정성 개선
-- ✅ 코드 리팩토링 및 의존성 최적화 완료
+## Quick Navigation
 
-## 🎯 프로젝트 개요
+### 📋 Latest Updates
+- **[Release Notes - June 14, 2025](RELEASE_NOTES_2025-06-14.md)** - Complete feature documentation for latest update
+- **[Update Summary](UPDATE_SUMMARY_2025-06-14.md)** - Executive overview of recent improvements
+- **[Changelog](CHANGELOG.md)** - Version history and development timeline
 
-코딩 없이 생성형 AI 웹 애플리케이션을 제작하는 방법을 단계별로 학습할 수 있는 교육 플랫폼입니다. 대학생, 교직원, 공무원을 대상으로 실무 중심의 교육 과정을 제공합니다.
+### 👨‍💼 Administration
+- **[Admin Guide](ADMIN_GUIDE.md)** - Complete administrative procedures and workflows
+- **[Technical Architecture](TECHNICAL_ARCHITECTURE.md)** - System design and implementation details
+- **[Security Guide](SECURITY_GUIDE.md)** - Content protection and security measures
 
-## ✨ 주요 기능
+### 🚀 Development
+- **[Developer Guide](DEVELOPER_GUIDE.md)** - Setup and development workflows
+- **[API Documentation](API_DOCUMENTATION.md)** - Complete endpoint reference
 
-### 📚 튜토리얼 시스템
-- **순차적 학습 과정**: 3단계 체계적 학습 (가입→활용→데모)
-- **인터랙티브 비디오**: 실제 화면 녹화 기반 튜토리얼
-- **실시간 썸네일**: 비디오 첫 프레임 자동 생성
-- **진도 관리**: 시청 시간 및 완료율 추적
+## Current Platform Status
 
-### 🎓 학습 센터
-- **초급자 과정**: PartyRock 기초 및 첫 앱 제작
-- **중급자 과정**: 실무 활용 및 고급 기능
-- **단계별 잠금**: 이전 과정 완료 후 다음 단계 해제
+### Version Information
+- **Current Version**: 2.1.0
+- **Last Updated**: June 14, 2025
+- **Status**: Production Ready
 
-### 🖥️ 관리자 시스템
-- **콘텐츠 관리**: 튜토리얼 및 앱 갤러리 등록/수정
-- **통계 대시보드**: 사용자 활동 및 학습 현황
-- **파일 업로드**: 비디오, 이미지, 자막 파일 관리
+### Key Features
+- **Video Tutorials**: 4 AWS PartyRock learning modules
+- **Admin Management**: Comprehensive content control system
+- **Security**: Download prevention and content protection
+- **Authentication**: Dynamic admin password management
+- **S3 Integration**: Reliable cloud video delivery
 
-## 🛠️ 기술 스택
+### Tutorial Library
+1. AWS PartyRock 가입 및 로그인 가이드 (초급)
+2. 위젯 제작 실습 (중급)
+3. 데모 확인 (초급)
+4. AI 여행 비서앱 핸즈온 실습 (고급)
 
-### Frontend
-- **React.js 18**: 모던 리액트 훅 기반 개발
-- **TypeScript**: 타입 안정성 보장
-- **Tailwind CSS**: 유틸리티 퍼스트 스타일링
-- **shadcn/ui**: 고품질 UI 컴포넌트
-- **TanStack Query**: 서버 상태 관리
-- **Wouter**: 경량 라우팅
+## Administrative Access
 
-### Backend
-- **Node.js + Express**: RESTful API 서버
-- **PostgreSQL**: 관계형 데이터베이스
-- **Drizzle ORM**: 타입 세이프 데이터베이스 액세스
-- **AWS S3**: 클라우드 비디오 호스팅
-- **Zod**: 런타임 스키마 검증
+### Login Credentials
+- **Admin Password**: `16!^109a`
+- **Access Path**: Navigate to admin tab → Enter credentials
+- **Password Change**: Available in admin settings panel
 
-### 개발 환경
-- **Vite**: 고속 빌드 도구
-- **ESLint + Prettier**: 코드 품질 관리
-- **Replit**: 클라우드 개발 및 배포
+### Management Capabilities
+- Tutorial content editing (titles, descriptions, URLs)
+- Publication status control (public/private)
+- Content deletion and re-upload
+- View analytics and engagement metrics
+- S3 asset management
 
-## 🚀 빠른 시작
+## Technical Stack
+- **Frontend**: React 18 + TypeScript + TailwindCSS
+- **Backend**: Express.js + PostgreSQL (Neon)
+- **Storage**: AWS S3 (Seoul region)
+- **Deployment**: Replit platform
 
-### 1. 프로젝트 설정
-```bash
-# 의존성 설치
-npm install
+## Security Implementation
+- Video download prevention
+- Right-click and keyboard shortcut blocking
+- Admin authentication with session management
+- Secure API endpoints with header validation
+- CSS-based content protection
 
-# 데이터베이스 마이그레이션
-npm run db:push
+## Support & Maintenance
 
-# 개발 서버 실행
-npm run dev
-```
+### Regular Tasks
+- Monitor tutorial engagement metrics
+- Update content as needed
+- Maintain S3 asset organization
+- Review security implementations
 
-### 2. 환경 변수 설정
-```env
-DATABASE_URL=postgresql://username:password@host:port/database
-ADMIN_KEY=nxtcloud-partyrock-admin
-```
-
-### 3. 접속 및 사용
-- **개발 환경**: http://localhost:5000
-- **관리자 패널**: 우측 상단 톱니바퀴 아이콘 클릭
-- **관리자 암호**: `nxtcloud-partyrock-admin`
-
-## 📖 사용 가이드
-
-### 학습자 가이드
-1. **홈페이지 접속** → "튜토리얼 영상 보기" 클릭
-2. **순차 학습**: 1→2→3 순서로 튜토리얼 시청
-3. **학습 센터**: 체계적인 단계별 과정 수강
-4. **앱 갤러리**: 예제 앱 탐색 및 활용
-
-### 관리자 가이드
-1. **인증**: 톱니바퀴 아이콘 → 관리자 키 입력
-2. **콘텐츠 업로드**: 비디오/이미지 파일 등록
-3. **통계 확인**: 사용자 활동 및 학습 현황 모니터링
-4. **앱 관리**: 갤러리 앱 등록 및 분류
-
-## 🗂️ 프로젝트 구조
-
-```
-├── client/                 # 프론트엔드 (React)
-│   ├── src/
-│   │   ├── components/     # 재사용 가능한 컴포넌트
-│   │   ├── pages/          # 페이지 컴포넌트
-│   │   ├── hooks/          # 커스텀 훅
-│   │   └── lib/            # 유틸리티 및 설정
-├── server/                 # 백엔드 (Express)
-│   ├── routes.ts           # API 라우트
-│   ├── storage.ts          # 데이터베이스 로직
-│   └── db.ts               # 데이터베이스 연결
-├── shared/                 # 공유 타입 및 스키마
-│   └── schema.ts           # Drizzle 스키마 정의
-├── uploads/                # 업로드된 파일 저장소
-├── docs/                   # 프로젝트 문서
-└── package.json            # 프로젝트 메타데이터
-```
-
-## 🔧 개발 가이드
-
-### 새로운 기능 추가
-1. **스키마 수정**: `shared/schema.ts`에서 데이터 모델 정의
-2. **API 개발**: `server/routes.ts`에서 엔드포인트 구현
-3. **프론트엔드**: `client/src/`에서 UI 컴포넌트 개발
-4. **타입 안정성**: TypeScript 타입 체크 통과 확인
-
-### 데이터베이스 마이그레이션
-```bash
-# 스키마 변경 후 데이터베이스 동기화
-npm run db:push
-
-# 스키마 상태 확인
-npm run db:studio
-```
-
-## 📊 성능 및 최적화
-
-- **Code Splitting**: 라우트별 자동 번들 분할
-- **이미지 최적화**: WebP 포맷 및 lazy loading
-- **캐싱 전략**: React Query 기반 서버 상태 캐싱
-- **번들 최적화**: Vite 기반 트리 셰이킹
-
-## 🔒 보안
-
-- **관리자 인증**: 암호 기반 접근 제어
-- **파일 검증**: 업로드 파일 타입 및 크기 제한
-- **SQL 인젝션 방지**: Drizzle ORM 쿼리 빌더 사용
-- **XSS 방지**: React의 기본 이스케이핑 활용
-
-## 🐛 문제 해결
-
-### 일반적인 문제
-- **비디오 재생 안됨**: 파일 경로 및 MIME 타입 확인
-- **관리자 접근 불가**: 암호 및 네트워크 상태 확인
-- **업로드 실패**: 파일 크기 및 형식 제한 확인
-
-### 로그 확인
-```bash
-# 서버 로그 확인
-npm run dev
-
-# 데이터베이스 연결 확인
-npm run db:studio
-```
-
-## 📞 지원 및 기여
-
-- **이슈 리포팅**: GitHub Issues 또는 관리자에게 문의
-- **기능 제안**: 사용자 피드백 적극 수용
-- **코드 기여**: Pull Request 환영
-
-## 📄 라이선스
-
-이 프로젝트는 교육 목적으로 개발되었으며, AWS PartyRock 플랫폼과의 연동을 통한 학습 경험 제공에 중점을 둡니다.
+### Future Enhancements
+- Batch tutorial operations
+- Automated thumbnail generation
+- Tutorial scheduling features
+- Enhanced analytics dashboard
 
 ---
 
-**개발팀**: NXT Cloud PartyRock 교육팀  
-**최종 업데이트**: 2024년 6월  
-**버전**: 1.0.0
+## Document Index
+
+| Document | Purpose | Last Updated |
+|----------|---------|--------------|
+| [Release Notes](RELEASE_NOTES_2025-06-14.md) | Latest feature documentation | June 14, 2025 |
+| [Admin Guide](ADMIN_GUIDE.md) | Administrative procedures | June 14, 2025 |
+| [Technical Architecture](TECHNICAL_ARCHITECTURE.md) | System design details | June 14, 2025 |
+| [Update Summary](UPDATE_SUMMARY_2025-06-14.md) | Executive overview | June 14, 2025 |
+| [Changelog](CHANGELOG.md) | Version history | June 14, 2025 |
+| [Security Guide](SECURITY_GUIDE.md) | Protection measures | June 10, 2025 |
+| [Developer Guide](DEVELOPER_GUIDE.md) | Development setup | June 10, 2025 |
+
+---
+*Documentation maintained by development team*  
+*Platform: Korean Language Learning - AWS PartyRock Edition*
