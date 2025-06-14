@@ -20,11 +20,10 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
     difficulty: "",
     duration: "",
     videoUrl: "", // S3 URL input
+    thumbnailUrl: "",
+    subtitleUrl: "",
   });
-  const [selectedFiles, setSelectedFiles] = useState<{
-    thumbnail?: File;
-    subtitle?: File;
-  }>({});
+
   
 
   const { toast } = useToast();
@@ -60,8 +59,10 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
         difficulty: "",
         duration: "",
         videoUrl: "",
+        thumbnailUrl: "",
+        subtitleUrl: "",
       });
-      setSelectedFiles({});
+
       
       if (onUploadSuccess) {
         onUploadSuccess();
@@ -95,8 +96,8 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
       difficulty: formData.difficulty,
       duration: parseInt(formData.duration) || 0,
       videoUrl: formData.videoUrl,
-      thumbnailUrl: "",
-      subtitleUrl: "",
+      thumbnailUrl: formData.thumbnailUrl || null,
+      subtitleUrl: formData.subtitleUrl || null,
     };
 
     uploadMutation.mutate(tutorialData);
@@ -154,7 +155,7 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label>카테고리</Label>
-                <Select onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}>
+                <Select value={formData.category} onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}>
                   <SelectTrigger>
                     <SelectValue placeholder="카테고리 선택" />
                   </SelectTrigger>
@@ -169,14 +170,14 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
 
               <div>
                 <Label>난이도</Label>
-                <Select onValueChange={(value) => setFormData(prev => ({ ...prev, difficulty: value }))}>
+                <Select value={formData.difficulty} onValueChange={(value) => setFormData(prev => ({ ...prev, difficulty: value }))}>
                   <SelectTrigger>
                     <SelectValue placeholder="난이도 선택" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="초급">초급</SelectItem>
-                    <SelectItem value="중급">중급</SelectItem>
-                    <SelectItem value="고급">고급</SelectItem>
+                    <SelectItem value="beginner">초급 (Beginner)</SelectItem>
+                    <SelectItem value="intermediate">중급 (Intermediate)</SelectItem>
+                    <SelectItem value="advanced">고급 (Advanced)</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -194,19 +195,25 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
             </div>
 
             <div>
-              <Label htmlFor="subtitle">자막 파일 (선택사항)</Label>
+              <Label htmlFor="thumbnailUrl">썸네일 URL (선택사항)</Label>
               <Input
-                id="subtitle"
-                type="file"
-                accept=".srt,.vtt"
-                onChange={(e) => {
-                  const files = e.target.files;
-                  if (files && files.length > 0) {
-                    setSelectedFiles(prev => ({ ...prev, subtitle: files[0] }));
-                  }
-                }}
+                id="thumbnailUrl"
+                placeholder="https://partyrock-guide-nxtcloud.s3.ap-northeast-2.amazonaws.com/thumbnail.jpg"
+                value={formData.thumbnailUrl || ""}
+                onChange={(e) => setFormData(prev => ({ ...prev, thumbnailUrl: e.target.value }))}
               />
-              <div className="text-xs text-nxt-gray-500 mt-1">.srt 또는 .vtt 형식</div>
+              <div className="text-xs text-nxt-gray-500 mt-1">S3에 업로드된 썸네일 이미지 URL</div>
+            </div>
+
+            <div>
+              <Label htmlFor="subtitleUrl">자막 URL (선택사항)</Label>
+              <Input
+                id="subtitleUrl"
+                placeholder="https://partyrock-guide-nxtcloud.s3.ap-northeast-2.amazonaws.com/subtitle.vtt"
+                value={formData.subtitleUrl || ""}
+                onChange={(e) => setFormData(prev => ({ ...prev, subtitleUrl: e.target.value }))}
+              />
+              <div className="text-xs text-nxt-gray-500 mt-1">S3에 업로드된 자막 파일 URL</div>
             </div>
 
             <Button
