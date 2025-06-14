@@ -6,7 +6,7 @@ import { insertTutorialSchema, insertAppSchema } from "@shared/schema";
 // Removed multer configuration - now using S3 URLs directly
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  const ADMIN_KEY = process.env.ADMIN_KEY || "nxtcloud-partyrock-admin";
+  let ADMIN_KEY = process.env.ADMIN_KEY || "16!^109a";
 
   // Middleware to verify admin authentication
   const verifyAdmin = (req: any, res: any, next: any) => {
@@ -31,6 +31,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } else {
       res.status(401).json({ success: false, message: "올바르지 않은 관리자 키입니다." });
     }
+  });
+
+  // Change admin password
+  app.post('/api/auth/admin/change-password', verifyAdmin, (req, res) => {
+    const { newPassword } = req.body;
+    if (!newPassword || newPassword.length < 6) {
+      return res.status(400).json({ message: "새 비밀번호는 최소 6자 이상이어야 합니다." });
+    }
+    ADMIN_KEY = newPassword;
+    res.json({ success: true, message: "관리자 비밀번호가 성공적으로 변경되었습니다." });
   });
 
   // Tutorial endpoints

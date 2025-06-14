@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/Header";
 import AdminAuthModal from "@/components/AdminAuthModal";
+import AdminPasswordChange from "@/components/AdminPasswordChange";
 import VideoUpload from "@/components/VideoUpload";
 import AppGalleryCard from "@/components/AppGalleryCard";
 import TutorialCard from "@/components/TutorialCard";
@@ -29,6 +30,8 @@ interface AdminStats {
 export default function Home() {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [showAdminModal, setShowAdminModal] = useState(false);
+  const [showPasswordChangeModal, setShowPasswordChangeModal] = useState(false);
+  const [adminKey, setAdminKey] = useState("");
 
   const [selectedAppCategory, setSelectedAppCategory] = useState("전체");
   const [activeTab, setActiveTab] = useState("home");
