@@ -30,17 +30,18 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
   const { toast } = useToast();
 
   const uploadMutation = useMutation({
-    mutationFn: async (data: FormData) => {
+    mutationFn: async (tutorialData: any) => {
       const response = await fetch("/api/tutorials", {
         method: "POST",
         headers: {
-          "X-Admin-Key": process.env.ADMIN_KEY || "partyrock-korea-2024",
+          "Content-Type": "application/json",
+          "X-Admin-Key": "nxtcloud-partyrock-admin",
         },
-        body: data,
+        body: JSON.stringify(tutorialData),
       });
       
       if (!response.ok) {
-        throw new Error("업로드에 실패했습니다.");
+        throw new Error("튜토리얼 업로드에 실패했습니다.");
       }
       
       return response.json();
@@ -78,31 +79,27 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.videoUrl) {
+    if (!formData.title || !formData.videoUrl || !formData.category || !formData.difficulty) {
       toast({
-        title: "비디오 URL을 입력해주세요",
-        description: "AWS S3 비디오 URL을 입력해주세요.",
+        title: "필수 항목을 입력해주세요",
+        description: "제목, 비디오 URL, 카테고리, 난이도는 필수 입력 항목입니다.",
         variant: "destructive",
       });
       return;
     }
 
-    const submitData = new FormData();
-    submitData.append("title", formData.title);
-    submitData.append("description", formData.description);
-    submitData.append("category", formData.category);
-    submitData.append("difficulty", formData.difficulty);
-    submitData.append("duration", formData.duration);
-    submitData.append("videoUrl", formData.videoUrl);
-    
-    if (selectedFiles.thumbnail) {
-      submitData.append("thumbnail", selectedFiles.thumbnail);
-    }
-    if (selectedFiles.subtitle) {
-      submitData.append("subtitle", selectedFiles.subtitle);
-    }
+    const tutorialData = {
+      title: formData.title,
+      description: formData.description,
+      category: formData.category,
+      difficulty: formData.difficulty,
+      duration: parseInt(formData.duration) || 0,
+      videoUrl: formData.videoUrl,
+      thumbnailUrl: "",
+      subtitleUrl: "",
+    };
 
-    uploadMutation.mutate(submitData);
+    uploadMutation.mutate(tutorialData);
   };
 
 
@@ -162,9 +159,10 @@ export default function VideoUpload({ onUploadSuccess }: VideoUploadProps) {
                     <SelectValue placeholder="카테고리 선택" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="기초">기초</SelectItem>
-                    <SelectItem value="응용">응용</SelectItem>
-                    <SelectItem value="고급">고급</SelectItem>
+                    <SelectItem value="가입 및 로그인 안내">가입 및 로그인 안내</SelectItem>
+                    <SelectItem value="위젯 및 제작 실습">위젯 및 제작 실습</SelectItem>
+                    <SelectItem value="데모 확인">데모 확인</SelectItem>
+                    <SelectItem value="핸즈온 실습">핸즈온 실습</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
