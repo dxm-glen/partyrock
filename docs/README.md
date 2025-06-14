@@ -1,99 +1,99 @@
-# Korean Language Learning Platform - Documentation
+# 한국어 학습 플랫폼 - 문서
 
-## Platform Overview
-Comprehensive multimedia education platform featuring AWS PartyRock tutorial content with advanced security and administrative capabilities.
+## 플랫폼 개요
+고급 보안 및 관리 기능을 갖춘 AWS PartyRock 튜토리얼 콘텐츠를 제공하는 종합적인 멀티미디어 교육 플랫폼입니다.
 
-## Quick Navigation
+## 빠른 내비게이션
 
-### 📋 Latest Updates
-- **[Release Notes - June 14, 2025](RELEASE_NOTES_2025-06-14.md)** - Complete feature documentation for latest update
-- **[Update Summary](UPDATE_SUMMARY_2025-06-14.md)** - Executive overview of recent improvements
-- **[Changelog](CHANGELOG.md)** - Version history and development timeline
+### 📋 최신 업데이트
+- **[릴리즈 노트 - 2025년 6월 14일](RELEASE_NOTES_2025-06-14.md)** - 최신 업데이트의 완전한 기능 문서
+- **[업데이트 요약](UPDATE_SUMMARY_2025-06-14.md)** - 최근 개선사항의 경영진 개요
+- **[변경 로그](CHANGELOG.md)** - 버전 히스토리 및 개발 타임라인
 
-### 👨‍💼 Administration
-- **[Admin Guide](ADMIN_GUIDE.md)** - Complete administrative procedures and workflows
-- **[Technical Architecture](TECHNICAL_ARCHITECTURE.md)** - System design and implementation details
-- **[Security Guide](SECURITY_GUIDE.md)** - Content protection and security measures
+### 👨‍💼 관리
+- **[관리자 가이드](ADMIN_GUIDE.md)** - 완전한 관리 절차 및 워크플로우
+- **[기술 아키텍처](TECHNICAL_ARCHITECTURE.md)** - 시스템 설계 및 구현 세부사항
+- **[보안 가이드](SECURITY_GUIDE.md)** - 콘텐츠 보호 및 보안 조치
 
-### 🚀 Development
-- **[Developer Guide](DEVELOPER_GUIDE.md)** - Setup and development workflows
-- **[API Documentation](API_DOCUMENTATION.md)** - Complete endpoint reference
+### 🚀 개발
+- **[개발자 가이드](DEVELOPER_GUIDE.md)** - 설정 및 개발 워크플로우
+- **[API 문서](API_DOCUMENTATION.md)** - 완전한 엔드포인트 참조
 
-## Current Platform Status
+## 현재 플랫폼 상태
 
-### Version Information
-- **Current Version**: 2.1.0
-- **Last Updated**: June 14, 2025
-- **Status**: Production Ready
+### 버전 정보
+- **현재 버전**: 2.1.0
+- **최종 업데이트**: 2025년 6월 14일
+- **상태**: 프로덕션 준비 완료
 
-### Key Features
-- **Video Tutorials**: 4 AWS PartyRock learning modules
-- **Admin Management**: Comprehensive content control system
-- **Security**: Download prevention and content protection
-- **Authentication**: Dynamic admin password management
-- **S3 Integration**: Reliable cloud video delivery
+### 주요 기능
+- **비디오 튜토리얼**: 4개 AWS PartyRock 학습 모듈
+- **관리자 관리**: 종합적인 콘텐츠 제어 시스템
+- **보안**: 다운로드 방지 및 콘텐츠 보호
+- **인증**: 동적 관리자 비밀번호 관리
+- **S3 통합**: 안정적인 클라우드 비디오 전송
 
-### Tutorial Library
+### 튜토리얼 라이브러리
 1. AWS PartyRock 가입 및 로그인 가이드 (초급)
 2. 위젯 제작 실습 (중급)
 3. 데모 확인 (초급)
 4. AI 여행 비서앱 핸즈온 실습 (고급)
 
-## Administrative Access
+## 관리자 접근
 
-### Login Credentials
-- **Admin Password**: `16!^109a`
-- **Access Path**: Navigate to admin tab → Enter credentials
-- **Password Change**: Available in admin settings panel
+### 로그인 자격 증명
+- **관리자 비밀번호**: `16!^109a`
+- **접근 경로**: 관리자 탭 → 자격 증명 입력
+- **비밀번호 변경**: 관리자 설정 패널에서 사용 가능
 
-### Management Capabilities
-- Tutorial content editing (titles, descriptions, URLs)
-- Publication status control (public/private)
-- Content deletion and re-upload
-- View analytics and engagement metrics
-- S3 asset management
+### 관리 기능
+- 튜토리얼 콘텐츠 편집 (제목, 설명, URL)
+- 공개 상태 제어 (공개/비공개)
+- 콘텐츠 삭제 및 재업로드
+- 조회 분석 및 참여 지표 확인
+- S3 자산 관리
 
-## Technical Stack
-- **Frontend**: React 18 + TypeScript + TailwindCSS
-- **Backend**: Express.js + PostgreSQL (Neon)
-- **Storage**: AWS S3 (Seoul region)
-- **Deployment**: Replit platform
+## 기술 스택
+- **프론트엔드**: React 18 + TypeScript + TailwindCSS
+- **백엔드**: Express.js + PostgreSQL (Neon)
+- **저장소**: AWS S3 (서울 리전)
+- **배포**: Replit 플랫폼
 
-## Security Implementation
-- Video download prevention
-- Right-click and keyboard shortcut blocking
-- Admin authentication with session management
-- Secure API endpoints with header validation
-- CSS-based content protection
+## 보안 구현
+- 비디오 다운로드 방지
+- 우클릭 및 키보드 단축키 차단
+- 세션 관리를 통한 관리자 인증
+- 헤더 검증을 통한 보안 API 엔드포인트
+- CSS 기반 콘텐츠 보호
 
-## Support & Maintenance
+## 지원 및 유지보수
 
-### Regular Tasks
-- Monitor tutorial engagement metrics
-- Update content as needed
-- Maintain S3 asset organization
-- Review security implementations
+### 정기 작업
+- 튜토리얼 참여 지표 모니터링
+- 필요에 따른 콘텐츠 업데이트
+- S3 자산 구성 유지
+- 보안 구현 검토
 
-### Future Enhancements
-- Batch tutorial operations
-- Automated thumbnail generation
-- Tutorial scheduling features
-- Enhanced analytics dashboard
-
----
-
-## Document Index
-
-| Document | Purpose | Last Updated |
-|----------|---------|--------------|
-| [Release Notes](RELEASE_NOTES_2025-06-14.md) | Latest feature documentation | June 14, 2025 |
-| [Admin Guide](ADMIN_GUIDE.md) | Administrative procedures | June 14, 2025 |
-| [Technical Architecture](TECHNICAL_ARCHITECTURE.md) | System design details | June 14, 2025 |
-| [Update Summary](UPDATE_SUMMARY_2025-06-14.md) | Executive overview | June 14, 2025 |
-| [Changelog](CHANGELOG.md) | Version history | June 14, 2025 |
-| [Security Guide](SECURITY_GUIDE.md) | Protection measures | June 10, 2025 |
-| [Developer Guide](DEVELOPER_GUIDE.md) | Development setup | June 10, 2025 |
+### 향후 개선사항
+- 일괄 튜토리얼 작업
+- 자동 썸네일 생성
+- 튜토리얼 예약 기능
+- 강화된 분석 대시보드
 
 ---
-*Documentation maintained by development team*  
-*Platform: Korean Language Learning - AWS PartyRock Edition*
+
+## 문서 인덱스
+
+| 문서 | 목적 | 최종 업데이트 |
+|------|------|---------------|
+| [릴리즈 노트](RELEASE_NOTES_2025-06-14.md) | 최신 기능 문서 | 2025년 6월 14일 |
+| [관리자 가이드](ADMIN_GUIDE.md) | 관리 절차 | 2025년 6월 14일 |
+| [기술 아키텍처](TECHNICAL_ARCHITECTURE.md) | 시스템 설계 세부사항 | 2025년 6월 14일 |
+| [업데이트 요약](UPDATE_SUMMARY_2025-06-14.md) | 경영진 개요 | 2025년 6월 14일 |
+| [변경 로그](CHANGELOG.md) | 버전 히스토리 | 2025년 6월 14일 |
+| [보안 가이드](SECURITY_GUIDE.md) | 보호 조치 | 2025년 6월 10일 |
+| [개발자 가이드](DEVELOPER_GUIDE.md) | 개발 설정 | 2025년 6월 10일 |
+
+---
+*개발팀에서 유지보수하는 문서*  
+*플랫폼: 한국어 학습 - AWS PartyRock 에디션*

@@ -1,81 +1,81 @@
-# Changelog
+# 변경 로그
 
-All notable changes to the Korean Language Learning Platform will be documented in this file.
+한국어 학습 플랫폼의 모든 주요 변경사항이 이 파일에 기록됩니다.
 
 ## [2.1.0] - 2025-06-14
 
-### 🔐 Security & Authentication
-- **CHANGED**: Admin password updated to `16!^109a`
-- **ADDED**: Dynamic password change functionality in admin panel
-- **ENHANCED**: Admin API authentication with proper header validation
-- **FIXED**: Authentication middleware for protected endpoints
+### 🔐 보안 및 인증
+- **변경**: 관리자 비밀번호를 `16!^109a`로 업데이트
+- **추가**: 관리자 패널에서 동적 비밀번호 변경 기능
+- **개선**: 적절한 헤더 검증을 통한 관리자 API 인증
+- **수정**: 보호된 엔드포인트를 위한 인증 미들웨어
 
-### 📚 Tutorial Management
-- **ADDED**: Comprehensive tutorial management interface
-- **ADDED**: Real-time editing modal for all tutorial fields
-- **ADDED**: Publication status control (public/private toggle)
-- **ADDED**: Complete tutorial deletion with confirmation
-- **ENHANCED**: Detailed tutorial information display including URLs, metadata, and statistics
-- **ADDED**: Database schema `published` field for content visibility control
+### 📚 튜토리얼 관리
+- **추가**: 종합적인 튜토리얼 관리 인터페이스
+- **추가**: 모든 튜토리얼 필드에 대한 실시간 편집 모달
+- **추가**: 공개 상태 제어 (공개/비공개 토글)
+- **추가**: 확인을 통한 완전한 튜토리얼 삭제
+- **개선**: URL, 메타데이터, 통계를 포함한 상세한 튜토리얼 정보 표시
+- **추가**: 콘텐츠 가시성 제어를 위한 데이터베이스 스키마 `published` 필드
 
-### 🎯 Content Administration
-- **IMPROVED**: S3 URL-based upload system replacing file uploads
-- **ADDED**: Thumbnail and subtitle URL management
-- **ENHANCED**: Category and difficulty tag editing
-- **ADDED**: Duration tracking and display
-- **IMPROVED**: View count analytics
+### 🎯 콘텐츠 관리
+- **개선**: 파일 업로드를 대체하는 S3 URL 기반 업로드 시스템
+- **추가**: 썸네일 및 자막 URL 관리
+- **개선**: 카테고리 및 난이도 태그 편집
+- **추가**: 재생시간 추적 및 표시
+- **개선**: 조회수 분석
 
-### 🏗️ Technical Infrastructure
-- **ADDED**: New API endpoints:
-  - `GET /api/admin/tutorials` - Fetch all tutorials including private
-  - `PATCH /api/tutorials/:id` - Update tutorial fields
-  - `DELETE /api/tutorials/:id` - Remove tutorials
-  - `POST /api/auth/admin/change-password` - Update admin credentials
-- **IMPROVED**: Database storage interface with publication filtering
-- **ENHANCED**: React Query integration for efficient caching
-- **FIXED**: TypeScript type safety improvements
+### 🏗️ 기술 인프라
+- **추가**: 새로운 API 엔드포인트:
+  - `GET /api/admin/tutorials` - 비공개 포함 모든 튜토리얼 가져오기
+  - `PATCH /api/tutorials/:id` - 튜토리얼 필드 업데이트
+  - `DELETE /api/tutorials/:id` - 튜토리얼 제거
+  - `POST /api/auth/admin/change-password` - 관리자 자격 증명 업데이트
+- **개선**: 공개 필터링을 통한 데이터베이스 저장소 인터페이스
+- **개선**: 효율적인 캐싱을 위한 React Query 통합
+- **수정**: TypeScript 타입 안전성 개선
 
-### 🎨 User Interface
-- **REDESIGNED**: Admin panel with comprehensive tutorial overview
-- **ADDED**: Edit modal with all tutorial fields
-- **IMPROVED**: Badge system for status indication
-- **ENHANCED**: Responsive layout for mobile devices
-- **ADDED**: Loading states and error handling
+### 🎨 사용자 인터페이스
+- **재설계**: 종합적인 튜토리얼 개요를 제공하는 관리자 패널
+- **추가**: 모든 튜토리얼 필드가 포함된 편집 모달
+- **개선**: 상태 표시를 위한 배지 시스템
+- **개선**: 모바일 기기를 위한 반응형 레이아웃
+- **추가**: 로딩 상태 및 오류 처리
 
-### 🧪 Testing & Validation
-- **TESTED**: Tutorial deletion and re-upload workflow
-- **VERIFIED**: Publication status changes
-- **CONFIRMED**: Password change functionality
-- **VALIDATED**: S3 URL integration
+### 🧪 테스트 및 검증
+- **테스트**: 튜토리얼 삭제 및 재업로드 워크플로우
+- **검증**: 공개 상태 변경
+- **확인**: 비밀번호 변경 기능
+- **검증**: S3 URL 통합
 
 ## [2.0.0] - 2025-06-10
 
-### 🛡️ Security Features
-- **ADDED**: Comprehensive video download prevention
-- **IMPLEMENTED**: Right-click blocking on video content
-- **ADDED**: Keyboard shortcut prevention (F12, Ctrl+S, Ctrl+U)
-- **ENHANCED**: CSS-based content protection
+### 🛡️ 보안 기능
+- **추가**: 종합적인 비디오 다운로드 방지
+- **구현**: 비디오 콘텐츠 우클릭 차단
+- **추가**: 키보드 단축키 방지 (F12, Ctrl+S, Ctrl+U)
+- **개선**: CSS 기반 콘텐츠 보호
 
-### 📺 Video Platform
-- **ADDED**: 4 tutorial videos hosted on AWS S3
-- **IMPLEMENTED**: Secure video streaming infrastructure
-- **ADDED**: Admin panel for content management
-- **ENHANCED**: Video player with security restrictions
+### 📺 비디오 플랫폼
+- **추가**: AWS S3에 호스팅된 4개 튜토리얼 비디오
+- **구현**: 보안 비디오 스트리밍 인프라
+- **추가**: 콘텐츠 관리를 위한 관리자 패널
+- **개선**: 보안 제한이 있는 비디오 플레이어
 
-### 🏠 Core Platform
-- **BUILT**: React.js responsive frontend
-- **CREATED**: Express.js backend with PostgreSQL
-- **IMPLEMENTED**: User authentication system
-- **DESIGNED**: Tutorial and app gallery structure
+### 🏠 핵심 플랫폼
+- **구축**: React.js 반응형 프론트엔드
+- **생성**: PostgreSQL을 사용한 Express.js 백엔드
+- **구현**: 사용자 인증 시스템
+- **설계**: 튜토리얼 및 앱 갤러리 구조
 
 ---
 
-## Legend
-- **ADDED**: New features
-- **CHANGED**: Changes to existing functionality
-- **DEPRECATED**: Soon-to-be removed features
-- **REMOVED**: Removed features
-- **FIXED**: Bug fixes
-- **SECURITY**: Security improvements
-- **ENHANCED**: Improvements to existing features
-- **TESTED**: Validation and testing updates
+## 범례
+- **추가**: 새로운 기능
+- **변경**: 기존 기능의 변경사항
+- **폐지**: 곧 제거될 기능
+- **제거**: 제거된 기능
+- **수정**: 버그 수정
+- **보안**: 보안 개선사항
+- **개선**: 기존 기능의 향상
+- **테스트**: 검증 및 테스트 업데이트

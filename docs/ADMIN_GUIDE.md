@@ -1,161 +1,161 @@
-# Admin Guide - Korean Language Learning Platform
+# 관리자 가이드 - 한국어 학습 플랫폼
 
-## Overview
-This guide covers all administrative functions for managing tutorial content, user access, and system settings.
+## 개요
+튜토리얼 콘텐츠 관리, 사용자 접근 제어, 시스템 설정을 위한 모든 관리 기능을 다룹니다.
 
-## Admin Authentication
+## 관리자 인증
 
-### Login Process
-1. Navigate to the admin tab
-2. Click "관리자" in the main navigation
-3. Enter admin password: `16!^109a`
-4. Access granted to all admin functions
+### 로그인 절차
+1. 관리자 탭으로 이동
+2. 메인 내비게이션에서 "관리자" 클릭
+3. 관리자 비밀번호 입력: `16!^109a`
+4. 모든 관리 기능에 대한 접근 권한 부여
 
-### Password Management
-- Change password via "관리자 비밀번호 변경" button
-- Minimum 6 characters required
-- Password persists during session only
-- Restart required for permanent changes
+### 비밀번호 관리
+- "관리자 비밀번호 변경" 버튼을 통한 비밀번호 변경
+- 최소 6자 이상 필요
+- 세션 중에만 비밀번호 유지
+- 영구 변경을 위해서는 재시작 필요
 
-## Tutorial Management
+## 튜토리얼 관리
 
-### Viewing Tutorial Information
-The tutorial management section displays:
-- **Title**: Korean tutorial name
-- **Description**: Detailed content description
-- **Video URL**: Direct S3 bucket link
-- **Thumbnail URL**: Preview image location
-- **Subtitle URL**: VTT/SRT caption file link
-- **Category**: Content classification (가입 및 로그인 안내, 위젯 및 제작 실습, etc.)
-- **Difficulty**: 초급, 중급, 고급
-- **Duration**: Runtime in minutes and seconds
-- **Views**: Total view count
-- **Status**: 공개 (public) or 비공개 (private)
+### 튜토리얼 정보 보기
+튜토리얼 관리 섹션에서 표시되는 정보:
+- **제목**: 한국어 튜토리얼 이름
+- **설명**: 상세한 콘텐츠 설명
+- **비디오 URL**: S3 버킷 직접 링크
+- **썸네일 URL**: 미리보기 이미지 위치
+- **자막 URL**: VTT/SRT 캡션 파일 링크
+- **카테고리**: 콘텐츠 분류 (가입 및 로그인 안내, 위젯 및 제작 실습 등)
+- **난이도**: 초급, 중급, 고급
+- **재생시간**: 분과 초 단위 실행 시간
+- **조회수**: 총 조회 횟수
+- **상태**: 공개 또는 비공개
 
-### Adding New Tutorials
-1. Use "튜토리얼 등록" form in admin panel
-2. Required fields:
-   - Title (영상 제목)
-   - Description (설명)
-   - Video URL (AWS S3 link)
-   - Category selection
-   - Difficulty level
-   - Duration in seconds
-3. Optional fields:
-   - Thumbnail URL
-   - Subtitle URL
-4. Click "업로드 및 발행" to publish
+### 새 튜토리얼 추가
+1. 관리자 패널의 "튜토리얼 등록" 폼 사용
+2. 필수 필드:
+   - 제목 (영상 제목)
+   - 설명
+   - 비디오 URL (AWS S3 링크)
+   - 카테고리 선택
+   - 난이도 레벨
+   - 초 단위 재생시간
+3. 선택 필드:
+   - 썸네일 URL
+   - 자막 URL
+4. "업로드 및 발행" 클릭하여 게시
 
-### Editing Existing Tutorials
-1. Click "수정" button on any tutorial
-2. Edit modal opens with all current values
-3. Modify any field as needed
-4. Click "저장" to apply changes
-5. Changes reflect immediately on public site
+### 기존 튜토리얼 편집
+1. 튜토리얼의 "수정" 버튼 클릭
+2. 현재 값이 모두 입력된 편집 모달 열림
+3. 필요에 따라 필드 수정
+4. "저장" 클릭하여 변경사항 적용
+5. 변경사항이 공개 사이트에 즉시 반영
 
-### Publication Control
-- **Public Tutorials**: Visible to all users
-- **Private Tutorials**: Hidden from public view
-- Toggle status with "공개로 변경" / "비공개로 변경" buttons
-- Private content remains in database for future publication
+### 공개 제어
+- **공개 튜토리얼**: 모든 사용자에게 표시
+- **비공개 튜토리얼**: 공개 보기에서 숨김
+- "공개로 변경" / "비공개로 변경" 버튼으로 상태 토글
+- 비공개 콘텐츠는 향후 공개를 위해 데이터베이스에 보관
 
-### Deleting Tutorials
-1. Click "삭제" button on unwanted tutorial
-2. Confirm deletion in popup dialog
-3. Tutorial permanently removed from database
-4. Action cannot be undone
+### 튜토리얼 삭제
+1. 원하지 않는 튜토리얼의 "삭제" 버튼 클릭
+2. 팝업 대화상자에서 삭제 확인
+3. 튜토리얼이 데이터베이스에서 완전히 제거됨
+4. 작업을 되돌릴 수 없음
 
-## S3 Asset Management
+## S3 자산 관리
 
-### Video URLs
-Format: `https://partyrock-guide-nxtcloud.s3.ap-northeast-2.amazonaws.com/filename.mp4`
+### 비디오 URL
+형식: `https://partyrock-guide-nxtcloud.s3.ap-northeast-2.amazonaws.com/filename.mp4`
 
-### Current Video Assets
+### 현재 비디오 자산
 - `signup-guide.mp4` - AWS PartyRock 가입 및 로그인 가이드
 - `practice.mp4` - 위젯 제작 실습
 - `demo.mp4` - 데모 확인
 - `hands-on.mp4` - AI 여행 비서앱 핸즈온 실습
 
-### Thumbnail Management
-- Optional preview images for videos
-- Supports JPG, PNG formats
-- Same S3 bucket structure as videos
+### 썸네일 관리
+- 비디오용 선택적 미리보기 이미지
+- JPG, PNG 형식 지원
+- 비디오와 동일한 S3 버킷 구조
 
-### Subtitle Support
-- VTT and SRT formats supported
-- Korean language captions recommended
-- Upload to same S3 bucket for consistency
+### 자막 지원
+- VTT 및 SRT 형식 지원
+- 한국어 캡션 권장
+- 일관성을 위해 동일한 S3 버킷에 업로드
 
-## Security Features
+## 보안 기능
 
-### Content Protection
-- Right-click blocking on video players
-- Keyboard shortcut prevention (F12, Ctrl+S, Ctrl+U)
-- Download prevention mechanisms
-- CSS-based text selection blocking
+### 콘텐츠 보호
+- 비디오 플레이어 우클릭 차단
+- 키보드 단축키 방지 (F12, Ctrl+S, Ctrl+U)
+- 다운로드 방지 메커니즘
+- CSS 기반 텍스트 선택 차단
 
-### Admin Access Control
-- Password-protected admin functions
-- Session-based authentication
-- API key validation for all operations
-- Secure header-based authentication
+### 관리자 접근 제어
+- 비밀번호로 보호되는 관리 기능
+- 세션 기반 인증
+- 모든 작업에 대한 API 키 검증
+- 보안 헤더 기반 인증
 
-## Best Practices
+## 모범 사례
 
-### Content Organization
-1. Use consistent naming conventions for S3 files
-2. Include descriptive titles in Korean
-3. Set appropriate difficulty levels
-4. Add comprehensive descriptions
-5. Test video playback before publishing
+### 콘텐츠 구성
+1. S3 파일에 일관된 명명 규칙 사용
+2. 한국어로 설명적인 제목 포함
+3. 적절한 난이도 설정
+4. 포괄적인 설명 추가
+5. 게시 전 비디오 재생 테스트
 
-### Regular Maintenance
-- Monitor view counts for popular content
-- Update outdated tutorials as needed
-- Maintain consistent video quality
-- Backup critical content regularly
+### 정기 유지보수
+- 인기 콘텐츠의 조회수 모니터링
+- 필요에 따라 오래된 튜토리얼 업데이트
+- 일관된 비디오 품질 유지
+- 중요한 콘텐츠 정기적 백업
 
-### User Experience
-- Keep tutorial titles concise but descriptive
-- Use progressive difficulty levels
-- Ensure video quality is consistent
-- Provide clear learning objectives
+### 사용자 경험
+- 튜토리얼 제목을 간결하면서도 설명적으로 유지
+- 점진적 난이도 사용
+- 일관된 비디오 품질 보장
+- 명확한 학습 목표 제공
 
-## Troubleshooting
+## 문제 해결
 
-### Admin Access Issues
-- Verify correct password entry
-- Check browser console for errors
-- Clear browser cache if needed
-- Restart application if authentication fails
+### 관리자 접근 문제
+- 올바른 비밀번호 입력 확인
+- 오류에 대한 브라우저 콘솔 확인
+- 필요시 브라우저 캐시 삭제
+- 인증 실패 시 애플리케이션 재시작
 
-### Video Playback Problems
-- Confirm S3 URL accessibility
-- Check video file format compatibility
-- Verify CORS settings on S3 bucket
-- Test with different browsers
+### 비디오 재생 문제
+- S3 URL 접근성 확인
+- 비디오 파일 형식 호환성 확인
+- S3 버킷의 CORS 설정 확인
+- 다른 브라우저로 테스트
 
-### Upload Failures
-- Validate all required fields completed
-- Check S3 URL format correctness
-- Ensure admin authentication is active
-- Review browser network tab for errors
+### 업로드 실패
+- 모든 필수 필드 완료 검증
+- S3 URL 형식 정확성 확인
+- 관리자 인증 활성 상태 확인
+- 오류에 대한 브라우저 네트워크 탭 검토
 
-## API Endpoints Reference
+## API 엔드포인트 참조
 
-### Admin Authentication
-- `POST /api/auth/admin` - Login verification
-- `POST /api/auth/admin/change-password` - Update credentials
+### 관리자 인증
+- `POST /api/auth/admin` - 로그인 검증
+- `POST /api/auth/admin/change-password` - 자격 증명 업데이트
 
-### Tutorial Management
-- `GET /api/admin/tutorials` - Fetch all tutorials (including private)
-- `POST /api/tutorials` - Create new tutorial
-- `PATCH /api/tutorials/:id` - Update existing tutorial
-- `DELETE /api/tutorials/:id` - Remove tutorial
+### 튜토리얼 관리
+- `GET /api/admin/tutorials` - 모든 튜토리얼 가져오기 (비공개 포함)
+- `POST /api/tutorials` - 새 튜토리얼 생성
+- `PATCH /api/tutorials/:id` - 기존 튜토리얼 업데이트
+- `DELETE /api/tutorials/:id` - 튜토리얼 제거
 
-### Public Access
-- `GET /api/tutorials` - Fetch published tutorials only
-- `GET /api/tutorials/:id` - View specific tutorial with analytics
+### 공개 접근
+- `GET /api/tutorials` - 공개된 튜토리얼만 가져오기
+- `GET /api/tutorials/:id` - 분석과 함께 특정 튜토리얼 보기
 
 ---
-*Last updated: June 14, 2025*
+*최종 업데이트: 2025년 6월 14일*
